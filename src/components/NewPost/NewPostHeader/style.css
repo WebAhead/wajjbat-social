@@ -1,0 +1,10 @@
+.NewPostHeader{
+    display: flex;
+    justify-content: space-between;
+}
+.newPostBackButton, .newPostTag, .newPostShareButton{
+    margin: 10px;
+}
+.newPostShareButton{
+    color: #4DB2A5;
+}
