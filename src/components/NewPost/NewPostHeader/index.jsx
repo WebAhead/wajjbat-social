@@ -7,7 +7,7 @@ const Header = () => (
       <h3 className="newPostTag">New Post</h3>
       <h3 className="newPostShareButton">Share</h3>
     </div>
-    <hr/>
+    <hr className="noMarginHR"/>
   </div>
 );
 

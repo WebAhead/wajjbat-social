@@ -1,0 +1,27 @@
+.addFoodTags, .howManyPeople, .ingredients, .howToPrepare{
+    margin: 10px;
+}
+.peopleSection{
+    display: flex;
+    /* border: 1px solid rgb(138, 138, 138); */
+    justify-content: space-between;
+}
+.peopleQuantity, .ingredientQuantity{
+    margin: 6px;
+    width: 60px;
+    height: 20px;
+}
+.ingredientElement, .fa-plus-circle{
+    margin: 6px;
+}
+.ingredientQuantity{
+    text-align: center;
+    font-weight: 600;
+}
+
+hr{
+    margin-top: 40px;
+}
+.noMarginHR{
+    margin-top: 5px;
+}

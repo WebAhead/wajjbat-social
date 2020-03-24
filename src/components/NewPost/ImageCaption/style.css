@@ -5,11 +5,6 @@
 .imageIcon{
     color: #4DB2A5;
     margin: 10px;
-    font-size: 100px;
-}
-.captionInput{
-    margin-top: 20px;
-}
-#filled-basic{
-    height: 40px;
+    margin-top: -3px;
+    font-size: 65px;
 }

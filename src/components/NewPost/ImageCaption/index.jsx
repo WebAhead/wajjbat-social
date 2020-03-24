@@ -6,11 +6,9 @@ const ImageCaption = () => (
   <div>
     <div className="imageCaption">
       <i className="fas fa-camera-retro imageIcon"></i>
-      <form className="captionInput" noValidate autoComplete="off">
-        <TextField id="filled-basic" label="Write a caption..." variant="filled" />
-      </form>
+      <TextField className="postCaption" label="Write a caption..." variant="filled" />
     </div>
-    <hr/>
+    <hr className="noMarginHR"/>
   </div>
 );
 
