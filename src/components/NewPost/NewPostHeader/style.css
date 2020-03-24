@@ -5,6 +5,9 @@
 .newPostBackButton, .newPostTag, .newPostShareButton{
     margin: 10px;
 }
+.newPostBackButton{
+    margin-top: 13px;
+}
 .newPostShareButton{
     color: #4DB2A5;
 }

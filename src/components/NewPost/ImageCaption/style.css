@@ -1,0 +1,15 @@
+.imageCaption{
+    display: flex;
+    justify-content: space-around;
+}
+.imageIcon{
+    color: #4DB2A5;
+    margin: 10px;
+    font-size: 100px;
+}
+.captionInput{
+    margin-top: 20px;
+}
+#filled-basic{
+    height: 40px;
+}
