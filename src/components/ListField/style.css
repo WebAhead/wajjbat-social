@@ -1,6 +1,6 @@
-.fieldset_main {
-  position: relative;
+.main_div {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   margin: 0 auto;
   width: 70%;
@@ -9,41 +9,54 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  overflow-y: scroll;
-  max-height: 250px;
+
 }
 .htp_list {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-  max-height: 250px;
+ 
 }
 .list {
   display: flex;
   flex-wrap: wrap;
 }
-.addons {
-  position: absolute;
-  top: 0.6em;
-  right: 80px;
-  background: #fff;
-  line-height:1.2em;
-}
+
 .MuiTypography-body1 {
   font-size: 20px !important;
+}
+.addons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.addons div {
+  margin: 5px auto;
+  border-radius: 60px;
+  padding: 8px 25px;
+}
+.addons img {
+  width: 100px;
+  height: 70px;
+}
+
+.addons span {
+  font-size: 25px;
 }
 
 @media screen and (max-width: 800px) {
   .MuiTypography-body1 {
-    font-size: 30px !important;
+    font-size: 18px !important;
   }
-  .fieldset_main {
-    width: 85%;
+  .main_div {
+    width: 95%;
   }
-  .addons {
-    position: absolute;
-    top: 3.2em;
-    right: 60px;
-    background: transparent;
+  .addons span {
+    font-size: 18px;
+  }
+  .addons img {
+    width: 70px;
+    height: 60px;
   }
 }

@@ -3,35 +3,46 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import "./style.css";
 
-function RenderRow({ obj }) {
-  return (
-    <ListItem button>
-      <ListItemText primary={`- ${obj}`} />
-    </ListItem>
-  );
+
+function RenderRow({ recipeInfo }) {
+  return recipeInfo.map((obj, i) => (
+    <div className="list" key={i}>
+      <ListItem button>
+        <li>
+          <ListItemText primary={obj} />
+        </li>
+      </ListItem>
+    </div>
+  ));
 }
 
-export default function ListField({ array, type, name, addons }) {
+export default function ListField({ recipeInfo, type, name, addons, numerical }) {
   return (
-    <fieldset className="fieldset_main">
-      <legend>
-        <h1>{name}:</h1>
-      </legend>
+    <div className="main_div">
+      <h1>{name}:</h1>
       {addons ? (
-        <div class="addons">
-          {" "}
-          <h2>{addons}</h2>
+        <div className="addons">
+          {addons.map((obj,i)=>
+          <div key={i}>
+            <img src={obj.image}></img>
+            <hr />
+            <h3>{obj.title}: </h3>
+            <span>{obj.info}</span>
+          </div>
+          )}
         </div>
       ) : (
         ""
       )}
-      <div className={type}>
-        {array.map((obj, i) => (
-          <div className="list">
-            <RenderRow obj={obj} key={i} />
-          </div>
-        ))}
-      </div>
-    </fieldset>
+      {numerical ? (
+        <ol className={type}>
+          <RenderRow recipeInfo={recipeInfo} />
+        </ol>
+      ) : (
+        <ul className={type}>
+          <RenderRow recipeInfo={recipeInfo} />
+        </ul>
+      )}
+    </div>
   );
 }
