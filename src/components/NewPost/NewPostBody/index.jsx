@@ -29,15 +29,15 @@ export default function NewPostBody() {
         <div className="ingredientsSection">
           <h3 className="ingredients">Ingredients</h3>
           <i className="fas fa-plus-circle"></i>
-          <input className="ingredientElement" placeHolder="Enter an ingredient"/>
-          <input className="ingredientQuantity" placeHolder="0"/>
+          <input className="ingredientElement" placeholder="Enter an ingredient"/>
+          <input className="ingredientQuantity" placeholder="0"/>
         </div>
         <hr/>
         <div className="howToPrepareSection">
           <h3 className="howToPrepare">How To Prepare</h3>
           <i className="fas fa-plus-circle"></i>
-          <input className="ingredientElement" placeHolder="Your Steps"/>
-          <input className="ingredientQuantity" placeHolder="Time"/>
+          <input className="ingredientElement" placeholder="Your Steps"/>
+          <input className="ingredientQuantity" placeholder="Time"/>
         </div>
         </div>
 

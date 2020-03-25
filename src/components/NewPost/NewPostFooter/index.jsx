@@ -8,11 +8,11 @@ const Footer = () => (
       <input type="checkbox" name="check"/>
       <label className="foodOptionsName">Halal</label>
     </div>
-    <div class="foodOptions2">
+    <div className="foodOptions2">
       <input type="checkbox" name="check1"/>
       <label className="foodOptionsName">Kosher</label>
     </div>
-    <div class="foodOptions3">
+    <div className="foodOptions3">
       <input type="checkbox" label="asdsad" name="check2"/>
       <label className="foodOptionsName">Vegan</label>
     </div>
