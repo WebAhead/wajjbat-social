@@ -1,0 +1,38 @@
+.followers {
+  background-color: white;
+  width: 340px;
+  border-radius: 15px;
+}
+
+.tab {
+  background-color: #21b5a2;
+}
+
+.barfollow {
+  margin-top: 150px;
+  width: 100%;
+}
+
+.ListItemAvatar {
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+}
+.Name {
+  margin-right: 50px;
+}
+
+.MuiBox-root,
+.MuiBox-root-100 {
+  text-align: center !important;
+  margin: 0 auto !important;
+  width: 340px;
+}
+
+.MuiTypography-root,
+.tappanel,
+.MuiTypography-body1 {
+  text-align: center !important;
+}
