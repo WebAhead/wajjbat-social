@@ -37,3 +37,9 @@
 .MuiTypography-body1 {
   text-align: center !important;
 }
+
+.Deletbutton {
+  background-color: white !important;
+  border: 5px solid #21b5a2 !important;
+  width: 130px !important;
+}

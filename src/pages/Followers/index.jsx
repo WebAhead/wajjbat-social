@@ -18,18 +18,6 @@ import Box from '@material-ui/core/Box';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
-  // const useStyles = makeStyles(theme => ({
-  //   root: {
-  //     width: '100%',
-  //     maxWidth: '36ch',
-  //     marginLeft: '40%',
-  //     marginTop: '100px'
-  //   },
-  //   inline: {
-  //     display: 'inline'
-  //   }
-  // }));
-
   return (
     <Typography
       component="div"
@@ -57,16 +45,7 @@ function a11yProps(index) {
   };
 }
 
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     flexGrow: 1,
-//     backgroundColor: theme.palette.background.paper,
-//     marginTop: '100px'
-//   }
-// }));
-
 export default function SimpleTabs() {
-  // const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -95,7 +74,7 @@ export default function SimpleTabs() {
             <div className="item">
               <ListItemText className="Name" primary="Name" />
               <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
+                <Button variant="contained" className="Deletbutton">
                   un follow
                 </Button>
               </div>
@@ -112,7 +91,7 @@ export default function SimpleTabs() {
             <div className="item">
               <ListItemText className="Name" primary="Name" />
               <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
+                <Button variant="contained" className="Deletbutton">
                   un follow
                 </Button>
               </div>
@@ -129,7 +108,7 @@ export default function SimpleTabs() {
             <div className="item">
               <ListItemText className="Name" primary="Name" />
               <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
+                <Button variant="contained" className="Deletbutton">
                   un follow
                 </Button>
               </div>
@@ -146,7 +125,7 @@ export default function SimpleTabs() {
             <div className="item">
               <ListItemText className="Name" primary="Name" />
               <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
+                <Button variant="contained" className="Deletbutton">
                   un follow
                 </Button>
               </div>
@@ -163,7 +142,7 @@ export default function SimpleTabs() {
             <div className="item">
               <ListItemText className="Name" primary="Name" />
               <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
+                <Button variant="contained" className="Deletbutton">
                   un follow
                 </Button>
               </div>
@@ -181,7 +160,7 @@ export default function SimpleTabs() {
             <div className="item">
               <ListItemText className="Name" primary="Name" />
               <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
+                <Button variant="contained" className="Deletbutton">
                   un follow
                 </Button>
               </div>
@@ -195,22 +174,7 @@ export default function SimpleTabs() {
             <div className="item">
               <ListItemText className="Name" primary="Name" />
               <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
+                <Button variant="contained" className="Deletbutton">
                   un follow
                 </Button>
               </div>
@@ -225,7 +189,22 @@ export default function SimpleTabs() {
             <div className="item">
               <ListItemText className="Name" primary="Name" />
               <div>
-                <Button variant="contained" color="secondary" className="Deletbutton">
+                <Button variant="contained" className="Deletbutton">
+                  un follow
+                </Button>
+              </div>
+            </div>
+          </ListItem>
+          <Divider variant="inset" component="li" />
+
+          <ListItem className="followersitem">
+            <ListItemAvatar className="ListItemAvatar">
+              <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
+            </ListItemAvatar>
+            <div className="item">
+              <ListItemText className="Name" primary="Name" />
+              <div>
+                <Button variant="contained" className="Deletbutton">
                   un follow
                 </Button>
               </div>
