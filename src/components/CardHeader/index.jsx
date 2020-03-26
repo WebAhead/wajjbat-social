@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function CardHeaderDefault() {
+export default function CardHeaderDefault({title,subheader}) {
     const classes = useStyles();
 
     return (
@@ -26,8 +26,8 @@ export default function CardHeaderDefault() {
           action={
             <FollowButton />
           }
-          title="Yousef Rizik"
-          subheader="Fluffy Pancake"
+          title={title}
+          subheader={subheader}
         />
         </div>
     )
