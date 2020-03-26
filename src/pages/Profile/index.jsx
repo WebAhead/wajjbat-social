@@ -14,6 +14,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import MainHeader from '../../components/MainHeader';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,6 +63,7 @@ export default function SimpleTabs() {
 
   return (
     <div>
+      <MainHeader />
       <div className="headerContainer">
         <div>
           <Button className="follow" variant="contained" disableElevation>

@@ -5,15 +5,15 @@
   justify-content: center;
 }
 .profileimg {
-  margin-top: 20px;
+  margin-top: 70px;
   height: 70px;
   width: 70px;
   border-radius: 50%;
   border: 5px solid #21b5a2;
 }
 .follow {
-  margin-top: 30px;
-  background-color: #21b5a2;
+  margin-top: 40px !important;
+  background-color: #21b5a2 !important;
 }
 
 .textdescription {
