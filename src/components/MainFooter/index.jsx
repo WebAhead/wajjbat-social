@@ -6,6 +6,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   root: {
@@ -35,35 +36,44 @@ export default function MainFooter() {
 
   return (
     <div>
+      
       <BottomNavigation
         value={value}
         onChange={handleChange}
         className={classes.root} 
       >
+        <Link href="/">
         <BottomNavigationAction
           label="Home"
           value="home"
           className={classes.label}
           icon={<HomeIcon className={classes.icons}/>}
         />
+        </Link>
+        <Link href="/Profile">
         <BottomNavigationAction
           label="Favorites"
           value="favorites"
           className={classes.label}
           icon={<FavoriteBorderIcon className={classes.icons} />}
         />
+        </Link>
+        <Link href="/AddPost">
         <BottomNavigationAction
           label="Add Post"
           value="post"
           className={classes.label}
           icon={<AddBoxIcon className={classes.icons} />}
         />
+        </Link>
+        <Link href="/Profile">
         <BottomNavigationAction
           label="Profile"
           value="profile"
           className={classes.label}
           icon={<PermIdentityIcon className={classes.icons} />}
         />
+        </Link>
       </BottomNavigation>
     </div>
   );
