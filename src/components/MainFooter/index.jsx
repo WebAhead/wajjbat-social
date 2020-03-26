@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 import React from "react";
@@ -71,3 +72,16 @@ export default function MainFooter() {
   );
 }
 >>>>>>> Stashed changes
+=======
+import React from 'react'
+
+export default function MainFooter() {
+    return (
+        <div>
+            
+        </div>
+    )
+}
+
+ 
+>>>>>>> origin
