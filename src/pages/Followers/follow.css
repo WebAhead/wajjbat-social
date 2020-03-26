@@ -1,0 +1,45 @@
+.followers,
+.following {
+  background-color: white;
+  width: 360px;
+  border-radius: 15px;
+}
+
+.tab {
+  background-color: #21b5a2;
+}
+
+.barfollow {
+  margin-top: 150px;
+  width: 100%;
+}
+
+.ListItemAvatar {
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+}
+.Name {
+  margin-right: 100px;
+}
+
+.MuiBox-root,
+.MuiBox-root-100 {
+  text-align: center !important;
+  margin: 0 auto !important;
+  width: 340px;
+}
+
+.MuiTypography-root,
+.tappanel,
+.MuiTypography-body1 {
+  text-align: center !important;
+}
+
+.Deletbutton {
+  background-color: white !important;
+  border: 5px solid #21b5a2 !important;
+  width: 130px !important;
+}
