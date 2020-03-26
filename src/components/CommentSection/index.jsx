@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Comment, Form, Header, Card } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import comments from "./comments.json";
+import './style.css'
 export default function CommentSection() {
   const [collapsed, setCollapsed] = React.useState(true);
 
@@ -33,8 +34,8 @@ export default function CommentSection() {
       ))}
 
       <Form reply>
-        <Form.TextArea />
-        <Button content="Add Reply" labelPosition="left" icon="edit" primary />
+        <Form.TextArea/>
+        <Button content="Add Reply" labelPosition="left" icon="edit" primary/>
       </Form>
     </Comment.Group>
   );
