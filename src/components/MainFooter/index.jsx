@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
@@ -71,17 +68,3 @@ export default function MainFooter() {
     </div>
   );
 }
->>>>>>> Stashed changes
-=======
-import React from 'react'
-
-export default function MainFooter() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
-
- 
->>>>>>> origin
