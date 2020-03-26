@@ -9,12 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import MainHeader from '../../components/MainHeader';
+import FeedCard from '../../components/FeedCard';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -87,7 +83,6 @@ export default function SimpleTabs() {
       <div>
         <TextareaAutosize className="textdescription" aria-label="minimum height" rowsMin={3} placeholder="textdescription" />
       </div>
-      {/* <div className={classes.root}> */}
 
       <AppBar position="static">
         <Tabs className="tabs" centered value={value} onChange={handleChange} aria-label="simple tabs example">
@@ -97,156 +92,22 @@ export default function SimpleTabs() {
       </AppBar>
       <TabPanel value={value} index={0}>
         <div className="postimg">
-          <Card className="card">
-            <CardActionArea>
-              <CardMedia
-                className="card-img"
-                component="img"
-                alt="Contemplative Reptile"
-                height="300"
-                image="https://images.immediate.co.uk/production/volatile/sites/2/2018/08/Peanut-butter-pancakes-78d1366.jpg?quality=90&resize=768%2C574"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Fluffy Pancakes
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Tall and fluffy. These pancakes are just right."{' '}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          <Card className="card">
-            <CardActionArea>
-              <CardMedia
-                className="card-img"
-                component="img"
-                alt="Contemplative Reptile"
-                height="300"
-                image="https://theloungeseuk.b-cdn.net/wp-content/uploads/2019/09/07_24_19_Loungers_WinterMenuSocial_ChickenChorizoPannini-500x280.jpg"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Fluffy Pancakes
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Tall and fluffy. These pancakes are just right. ."{' '}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          <Card className="card">
-            <CardActionArea>
-              <CardMedia
-                className="card-img"
-                component="img"
-                alt="Contemplative Reptile"
-                height="300"
-                image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRVwC1ONsnfndTuWSOCmSlyPyZ6cQY77nuyVcHa_7cWGdA8ZJ-c"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Fluffy Pancakes
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Tall and fluffy. These pancakes are just right. Topped with ."{' '}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          <Card className="card">
-            <CardActionArea>
-              <CardMedia
-                className="card-img"
-                component="img"
-                alt="Contemplative Reptile"
-                height="300"
-                image="https://images.immediate.co.uk/production/volatile/sites/2/2018/08/Peanut-butter-pancakes-78d1366.jpg?quality=90&resize=768%2C574"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Fluffy Pancakes
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Tall and fluffy. These pancakes are just right."{' '}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          <Card className="card">
-            <CardActionArea>
-              <CardMedia
-                className="card-img"
-                component="img"
-                alt="Contemplative Reptile"
-                height="300"
-                image="https://theloungeseuk.b-cdn.net/wp-content/uploads/2019/09/07_24_19_Loungers_WinterMenuSocial_ChickenChorizoPannini-500x280.jpg"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Fluffy Pancakes
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {' '}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          <Card className="card">
-            <CardActionArea>
-              <CardMedia
-                className="card-img"
-                component="img"
-                alt="Contemplative Reptile"
-                height="300"
-                image="https://theloungeseuk.b-cdn.net/wp-content/uploads/2019/09/07_24_19_Loungers_WinterMenuSocial_ChickenChorizoPannini-500x280.jpg"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Fluffy Pancakes
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  <img></img>
-                  Tall and fluffy. These pancakes are just right."{' '}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-
-          <Card className="card">
-            <CardActionArea>
-              <CardMedia
-                className="card-img"
-                component="img"
-                alt="Contemplative Reptile"
-                height="300"
-                image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRVwC1ONsnfndTuWSOCmSlyPyZ6cQY77nuyVcHa_7cWGdA8ZJ-c"
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Fluffy Pancakes
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Tall and fluffy. These pancakes are just right. ."{' '}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
+          <div className="feedCard">
+            <FeedCard className="" />
+            <FeedCard />
+            <FeedCard />
+            <FeedCard />
+            <FeedCard />
+            <FeedCard />
+            <FeedCard />
+            <FeedCard />
+            <FeedCard />
+            <FeedCard />
+          </div>
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <FeedCard />
       </TabPanel>
     </div>
   );
