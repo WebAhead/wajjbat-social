@@ -1,4 +1,4 @@
-.imageCaption{
+.imageAndCaption{
     display: flex;
     justify-content: space-around;
 }
@@ -7,4 +7,7 @@
     margin: 10px;
     margin-top: -3px;
     font-size: 65px;
+}
+.MuiFilledInput-input{
+    height: 45px !important;
 }
