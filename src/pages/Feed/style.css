@@ -1,0 +1,7 @@
+.feedCard {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+  
