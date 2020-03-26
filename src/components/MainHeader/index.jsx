@@ -12,7 +12,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logoExample from '../../assets/logos/logoExample.png'
-import red from '@material-ui/core/colors/red';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -27,6 +26,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     background: 'linear-gradient(45deg, #f44336 30%, #b71c1c 90%)',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    position: 'fixed'
   },
   search: {
     position: 'relative',

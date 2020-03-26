@@ -22,12 +22,12 @@ const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 345,
     backgroundColor: 'linear-gradient(45deg, #f44336 30%, #b71c1c 90%)',
-    boxShadow: '3px 2px 3px 2px rgba(255, 105, 135, .3)'
+    boxShadow: '3px 2px 3px 2px rgba(255, 105, 135, .3)',
   },
   mainContainer: {
     display: "flex",
     justifyContent: "center",
-    marginBottom: 20,
+    marginTop: 60,
     backgroundColor: 'linear-gradient(45deg, #f44336 30%, #b71c1c 90%)',
   },
   commentContainer: {
