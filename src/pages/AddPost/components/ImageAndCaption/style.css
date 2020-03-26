@@ -1,0 +1,13 @@
+.imageAndCaption{
+    display: flex;
+    justify-content: space-around;
+}
+.imageIcon{
+    color: #4DB2A5;
+    margin: 10px;
+    margin-top: -3px;
+    font-size: 65px;
+}
+.MuiFilledInput-input{
+    height: 45px !important;
+}
