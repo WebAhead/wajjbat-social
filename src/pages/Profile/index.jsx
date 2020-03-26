@@ -85,6 +85,8 @@ export default function SimpleTabs() {
       <div>
         <TextareaAutosize className="textdescription" aria-label="minimum height" rowsMin={3} placeholder="textdescription" />
       </div>
+      {/* <div className={classes.root}> */}
+
       <AppBar position="static">
         <Tabs className="tabs" centered value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab className="tab" label="My Post" {...a11yProps(0)} />
