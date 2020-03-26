@@ -1,11 +1,9 @@
 import React from 'react'
 
-export default function MainFooter() {
+export default function PostCard() {
     return (
         <div>
-            
+                
         </div>
     )
 }
-
- 

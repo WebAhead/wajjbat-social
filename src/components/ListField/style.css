@@ -1,0 +1,62 @@
+.main_div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 70%;
+}
+.ingredients_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+}
+.htp_list {
+  display: flex;
+  flex-direction: column;
+ 
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.MuiTypography-body1 {
+  font-size: 20px !important;
+}
+.addons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.addons div {
+  margin: 5px auto;
+  border-radius: 60px;
+  padding: 8px 25px;
+}
+.addons img {
+  width: 100px;
+  height: 70px;
+}
+
+.addons span {
+  font-size: 25px;
+}
+
+@media screen and (max-width: 800px) {
+  .MuiTypography-body1 {
+    font-size: 18px !important;
+  }
+  .main_div {
+    width: 95%;
+  }
+  .addons span {
+    font-size: 18px;
+  }
+  .addons img {
+    width: 70px;
+    height: 60px;
+  }
+}
