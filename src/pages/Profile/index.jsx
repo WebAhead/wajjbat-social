@@ -11,6 +11,7 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import MainHeader from '../../components/MainHeader';
 import FeedCard from '../../components/FeedCard';
+import MainFooter from '../../components/MainFooter';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,56 +60,59 @@ export default function SimpleTabs() {
 
   return (
     <div>
-      <MainHeader />
-      <div className="headerContainer">
-        <div>
-          <Button className="follow" variant="contained" disableElevation>
-            followers
-          </Button>
-        </div>
-        <a>
-          <img
-            className="profileimg"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5awDmi4At0iNdGyH7xWmHvkLYutIXqGzXFWQcjxakOrmjfj1I"
-            alt="profileimg"
-          ></img>
-          <h3>Name</h3>
-        </a>
-        <div>
-          <Button className="follow" variant="contained" disableElevation>
-            following
-          </Button>
-        </div>
-      </div>
       <div>
-        <TextareaAutosize className="textdescription" aria-label="minimum height" rowsMin={3} placeholder="textdescription" />
-      </div>
-
-      <AppBar position="static">
-        <Tabs className="tabs" centered value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab className="tab" label="My Post" {...a11yProps(0)} />
-          <Tab className="tab" label="Favorites " {...a11yProps(1)} />
-        </Tabs>
-      </AppBar>
-      <TabPanel value={value} index={0}>
-        <div className="postimg">
-          <div className="feedCard">
-            <FeedCard className="" />
-            <FeedCard />
-            <FeedCard />
-            <FeedCard />
-            <FeedCard />
-            <FeedCard />
-            <FeedCard />
-            <FeedCard />
-            <FeedCard />
-            <FeedCard />
+        <MainHeader />
+        <div className="headerContainer">
+          <div>
+            <Button className="follow" variant="contained" disableElevation>
+              followers
+            </Button>
+          </div>
+          <a>
+            <img
+              className="profileimg"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5awDmi4At0iNdGyH7xWmHvkLYutIXqGzXFWQcjxakOrmjfj1I"
+              alt="profileimg"
+            ></img>
+            <h3>Name</h3>
+          </a>
+          <div>
+            <Button className="follow" variant="contained" disableElevation>
+              following
+            </Button>
           </div>
         </div>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <FeedCard />
-      </TabPanel>
+        <div>
+          <TextareaAutosize className="textdescription" aria-label="minimum height" rowsMin={3} placeholder="textdescription" />
+        </div>
+
+        <AppBar position="static">
+          <Tabs className="tabs" centered value={value} onChange={handleChange} aria-label="simple tabs example">
+            <Tab className="tab" label="My Post" {...a11yProps(0)} />
+            <Tab className="tab" label="Favorites " {...a11yProps(1)} />
+          </Tabs>
+        </AppBar>
+        <TabPanel value={value} index={0}>
+          <div className="postimg">
+            <div className="feedCard">
+              <FeedCard className="" />
+              <FeedCard />
+              <FeedCard />
+              <FeedCard />
+              <FeedCard />
+              <FeedCard />
+              <FeedCard />
+              <FeedCard />
+              <FeedCard />
+              <FeedCard />
+            </div>
+          </div>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <FeedCard />
+        </TabPanel>
+      </div>
+      <MainFooter />
     </div>
   );
 }
