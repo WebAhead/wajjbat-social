@@ -14,6 +14,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import MainFooter from '../../components/MainFooter';
+import MainHeader from '../../components/MainHeader';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,165 +56,169 @@ export default function SimpleTabs() {
 
   return (
     <div>
-      <div className="barfollow">
-        <AppBar position="static">
-          <Tabs className="tab" centered value={value} onChange={handleChange} aria-label="simple tabs example">
-            <Tab label="followers" {...a11yProps(0)} />
-            <Tab label="following" {...a11yProps(1)} />
-          </Tabs>
-        </AppBar>
+      {/* <MainHeader /> */}
+      <div>
+        <div className="barfollow">
+          <AppBar position="static">
+            <Tabs className="tab" centered value={value} onChange={handleChange} aria-label="simple tabs example">
+              <Tab label="followers" {...a11yProps(0)} />
+              <Tab label="following" {...a11yProps(1)} />
+            </Tabs>
+          </AppBar>
+        </div>
+        <TabPanel className="tappanel" value={value} index={0}>
+          <List className="followers">
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
+                />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
+                />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
+                />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
+                />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
+                />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+          </List>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          <List className="following">
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+
+            <ListItem className="followersitem">
+              <ListItemAvatar className="ListItemAvatar">
+                <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
+              </ListItemAvatar>
+              <div className="item">
+                <ListItemText className="Name" primary="Name" />
+                <div>
+                  <Button variant="contained" className="Deletbutton">
+                    un follow
+                  </Button>
+                </div>
+              </div>
+            </ListItem>
+            <Divider variant="inset" component="li" />
+          </List>
+        </TabPanel>
       </div>
-      <TabPanel className="tappanel" value={value} index={0}>
-        <List className="followers">
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar
-                alt="Remy Sharp"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
-              />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar
-                alt="Remy Sharp"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
-              />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar
-                alt="Remy Sharp"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
-              />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar
-                alt="Remy Sharp"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
-              />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar
-                alt="Remy Sharp"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSryt2zIsuLWBGnlbljN25G4eorGzIPJuDxN8EcJkqEUPbRYkZV"
-              />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-        </List>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <List className="following">
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-
-          <ListItem className="followersitem">
-            <ListItemAvatar className="ListItemAvatar">
-              <Avatar alt="Remy Sharp" src="https://www.w3schools.com/bootstrap4/img_avatar6.png" />
-            </ListItemAvatar>
-            <div className="item">
-              <ListItemText className="Name" primary="Name" />
-              <div>
-                <Button variant="contained" className="Deletbutton">
-                  un follow
-                </Button>
-              </div>
-            </div>
-          </ListItem>
-          <Divider variant="inset" component="li" />
-        </List>
-      </TabPanel>
+      <MainFooter />
     </div>
   );
 }
