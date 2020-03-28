@@ -64,7 +64,7 @@ export default function SimpleTabs() {
     <div>
       <div className="headerContainer">
         <div>
-          <Button className="follow" variant="contained" disableElevation>
+          <Button className="follow" variant="contained" href="/Followers">
             followers
           </Button>
         </div>
@@ -77,7 +77,7 @@ export default function SimpleTabs() {
           <h3>Name</h3>
         </a>
         <div>
-          <Button className="follow" variant="contained" disableElevation>
+          <Button className="follow" variant="contained" href="/Followers">
             following
           </Button>
         </div>

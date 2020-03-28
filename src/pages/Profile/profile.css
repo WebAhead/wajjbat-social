@@ -13,7 +13,7 @@
 }
 .follow {
   margin-top: 30px;
-  background-color: #21b5a2;
+  background-color: #21b5a2 !important;
 }
 
 .textdescription {
