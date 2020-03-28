@@ -1,6 +1,7 @@
 import React from 'react'
 import FeedCard from '../../components/FeedCard'
 import MainHeader from '../../components/MainHeader'
+import MainFooter from '../../components/MainFooter'
 import './style.css'
 
 export default function Feed() {
@@ -8,7 +9,7 @@ export default function Feed() {
         <div>
             <MainHeader />
             <div className='feedCard'>
-            <FeedCard className=''/>
+            <FeedCard />
             <FeedCard />
             <FeedCard />
             <FeedCard />
@@ -19,6 +20,7 @@ export default function Feed() {
             <FeedCard />
             <FeedCard />
             </div>
+            <MainFooter />
         </div>
     )
 }
