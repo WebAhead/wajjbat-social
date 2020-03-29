@@ -1,45 +1,18 @@
-.followers,
-.following {
-  background-color: white;
-  width: 360px;
-  border-radius: 15px;
-}
-
-.tab {
-  background-color: #21b5a2;
-}
-
 .barfollow {
-  margin-top: 150px;
-  width: 100%;
-}
-
-.ListItemAvatar {
-}
-
-.item {
+  background-color: #21b5a2;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 60px;
 }
-.Name {
-  margin-right: 100px;
-}
-
-.MuiBox-root,
-.MuiBox-root-100 {
-  text-align: center !important;
-  margin: 0 auto !important;
-  width: 340px;
+.barfollow :hover {
+  border-style: solid;
+  border-color: #21b5a2 #21b5a2 red #21b5a2;
 }
 
-.MuiTypography-root,
-.tappanel,
-.MuiTypography-body1 {
-  text-align: center !important;
-}
-
-.Deletbutton {
-  background-color: white !important;
-  border: 5px solid #21b5a2 !important;
-  width: 130px !important;
+.Text {
+  text-align: center;
+  font-size: x-large;
+  margin-top: 12px !important;
 }
