@@ -10,12 +10,12 @@ export default function AddPost() {
   const [foodTags, setFoodTags] = React.useState(null);
   const [howManyPeople, setHowManyPeople] = React.useState(null);
   const [difficulty, setDifficulty] = React.useState('Easy');
-  const [ingredients, setIngredients] = React.useState(null);
-  const [howToPrepareSteps, setHowToPrepareSteps] = React.useState(null);
+  const [time, setTime] = React.useState(null);
+  const [ingredients, setIngredients] = React.useState({});
+  const [howToPrepareSteps, setHowToPrepareSteps] = React.useState([]);
   //The newPostCheckBox holds the food options and their state, if the option doesnt 
   //appear in the newPostCheckBox it means its false.
   const [newPostCheckBox, setNewPostCheckBox] = React.useState(null);
-
   return (
     <div>
       <NewPostHeader />
@@ -25,7 +25,10 @@ export default function AddPost() {
         setFoodTags={setFoodTags}
         setHowManyPeople={setHowManyPeople}
         setDifficulty={setDifficulty}
+        setTime={setTime}
+        ingredients={ingredients}
         setIngredients={setIngredients}
+        howToPrepareSteps={howToPrepareSteps}
         setHowToPrepareSteps={setHowToPrepareSteps}
       />
       <NewPostFooter newPostCheckBox={newPostCheckBox} setNewPostCheckBox={setNewPostCheckBox}/>
