@@ -1,10 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import Avatar from "@material-ui/core/Avatar";
 import CardHeader from "../../components/CardHeader";
-import CommentFeed from "../../components/CommentFeed";
 import PostDetails from "../../components/PostDetails";
+import CommentSection from "../../components/CommentSection";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,11 +20,6 @@ const useStyles = makeStyles(theme => ({
   commentContainer: {
     display: "flex",
     justifyContent: "flex-start"
-  },
-  comment: {
-    backgroundColor: "red",
-    marginLeft: 10,
-    top: 25
   }
 }));
 
@@ -37,12 +31,7 @@ export default function FeedCard({userName,postTitle, isExpanded }) {
       <Card className={classes.root}>
         <CardHeader userName={userName} />
         <PostDetails postTitle={postTitle} isExpanded={isExpanded} />
-        <div className={classes.commentContainer}>
-          <Avatar aria-label="recipe" className={classes.comment}>
-            Y
-          </Avatar>
-          <CommentFeed />
-        </div>
+          <CommentSection />
       </Card>
     </div>
   );

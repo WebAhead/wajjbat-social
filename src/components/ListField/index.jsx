@@ -19,7 +19,7 @@ function RenderRow({ recipeInfo }) {
 export default function ListField({ recipeInfo, type, name, addons, numerical }) {
   return (
     <div className="main_div">
-      <h1>{name}:</h1>
+      <h2>{name}:</h2>
       {addons ? (
         <div className="addons">
           {addons.map((obj,i)=>
