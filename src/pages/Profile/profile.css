@@ -33,6 +33,15 @@
 }
 .tabs {
   background-color: #21b5a2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 60px;
+}
+.text {
+  text-align: center;
+  font-size: xx-large;
 }
 
 .card-img {

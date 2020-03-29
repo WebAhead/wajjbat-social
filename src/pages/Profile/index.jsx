@@ -1,62 +1,24 @@
 import React from 'react';
 import './profile.css';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
 import MainHeader from '../../components/MainHeader';
 import FeedCard from '../../components/FeedCard';
 import MainFooter from '../../components/MainFooter';
+import { BrowserRouter as Router, Link, useLocation } from 'react-router-dom';
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
+export default function QueryParamsExample() {
   return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box p={3}>{children}</Box>}
-    </Typography>
+    <Router>
+      <QueryParamsDemo />
+    </Router>
   );
 }
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
-  };
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-    textAlign: 'center'
-  }
-}));
-
-export default function SimpleTabs() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+function QueryParamsDemo() {
+  let query = useQuery();
 
   return (
     <div>
@@ -85,36 +47,37 @@ export default function SimpleTabs() {
           </div>
         </div>
         <div>
-          <TextareaAutosize className="textdescription" aria-label="minimum height" rowsMin={3} placeholder="textdescription" />
-        </div>
+          <ul className="tabs">
+            <Link className="text" to="/profile?name=MyPost">
+              MyPost
+            </Link>
 
-        <AppBar position="static">
-          <Tabs className="tabs" centered value={value} onChange={handleChange} aria-label="simple tabs example">
-            <Tab className="tab" label="My Post" {...a11yProps(0)} />
-            <Tab className="tab" label="Favorites " {...a11yProps(1)} />
-          </Tabs>
-        </AppBar>
-        <TabPanel value={value} index={0}>
-          <div className="postimg">
-            <div className="feedCard">
-              <FeedCard className="" />
-              <FeedCard />
-              <FeedCard />
-              <FeedCard />
-              <FeedCard />
-              <FeedCard />
-              <FeedCard />
-              <FeedCard />
-              <FeedCard />
-              <FeedCard />
-            </div>
-          </div>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <FeedCard />
-        </TabPanel>
+            <Link className="text" to="/profile?name=Favorite">
+              Favorite
+            </Link>
+          </ul>
+
+          <Child name={query.get('name')} />
+        </div>
       </div>
       <MainFooter />
+    </div>
+  );
+}
+
+function Child({ name }) {
+  return (
+    <div>
+      {name ? (
+        <h3>
+          The <code>name</code> in the query string is &quot;{name}
+          &quot;
+        </h3>
+      ) : (
+        <h3>
+          The <code>MyPost</code> in the query string is &quot; MyPost &quot;
+        </h3>
+      )}
     </div>
   );
 }
