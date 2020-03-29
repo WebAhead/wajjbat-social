@@ -9,7 +9,7 @@ export default function Feed() {
       <MainHeader />
       <div className="feedCard">
         {[...Array(10)].map(() => (
-          <FeedCard />
+          <FeedCard userName='Yousef Rizik' postTitle='Fluffy Pancakes'/>
         ))}
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import ListField from '../../components/ListField'
 import timePng from "../../assets/images/time.png";
 import servingPng from "../../assets/images/serving.png";
+import PostDetails from '../../components/PostDetails';
 
 export default function ViewPost() {
     const ingredients = ["1 1/2 pounds ground beef","1 egg","1 onion chopped","1 cup milk"];
@@ -11,6 +12,7 @@ export default function ViewPost() {
      const addons=[{title:'Preparation',info:'1 h 10 m',image:timePng},{title:'Serving',info:'8 servings',image:servingPng}]
     return (
         <div>
+            <PostDetails postTitle='Fluffy Pancakes' isExpanded/>
             <ListField recipeInfo={ingredients} type='ingredients_list' name='Ingredients'/>
             <ListField recipeInfo={preparationSteps} type='htp_list' name='How to Prepare' addons={addons}  numerical/>
         </div>

@@ -52,15 +52,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
- 
+export default function PostDetails({ postTitle, isExpanded }) {
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
 
-export default function PostDetails({isExpanded}) {
-    const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-    
-    const handleExpandClick = () => {
-      setExpanded(!expanded);
-    };
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
   return (
     <React.Fragment>
       <CardMedia className={classes.media} image={pancakeExample} />
@@ -73,15 +71,17 @@ export default function PostDetails({isExpanded}) {
           <ThumbUpIcon />
         </IconButton>
         <IconButton aria-label="share">
-          Details
           <ShareIcon />
         </IconButton>
+        <IconButton aria-label="share">
+          <img className={classes.logo} src={halal} alt="halal" />
+        </IconButton>
+        <IconButton aria-label="share">
+          <img className={classes.logo} src={noGluten} alt="no gluten" />
+        </IconButton>
       </CardActions>
-      <div className={classes.logoContainer}>
-        <img className={classes.logo} src={halal} alt="halal" />
-        <img className={classes.logo} src={noGluten} alt="no gluten" />
-      </div>
-      <CardContent>
+      <CardContent style={{ paddingTop: 0 }}>
+        <h2 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h2>
         <Typography variant="body2" color="textSecondary" component="p">
           Tall and fluffy. These pancakes are just right. Topped with
           strawberries and whipped cream, they are impossible to resist.

@@ -29,14 +29,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function FeedCard({ isExpanded }) {
+export default function FeedCard({userName,postTitle, isExpanded }) {
   const classes = useStyles();
 
   return (
     <div className={classes.mainContainer}>
       <Card className={classes.root}>
-        <CardHeader title="Yousef Rizik" subheader="Fluffy Pancakes" />
-        <PostDetails isExpanded={isExpanded} />
+        <CardHeader userName={userName} />
+        <PostDetails postTitle={postTitle} isExpanded={isExpanded} />
         <div className={classes.commentContainer}>
           <Avatar aria-label="recipe" className={classes.comment}>
             Y
