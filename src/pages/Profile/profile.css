@@ -39,9 +39,15 @@
   justify-content: space-evenly;
   height: 60px;
 }
+.tabs :hover {
+  border-style: solid;
+  border-color: #21b5a2 #21b5a2 red #21b5a2;
+}
+
 .text {
   text-align: center;
-  font-size: xx-large;
+  font-size: x-large;
+  margin-top: 12px !important;
 }
 
 .card-img {

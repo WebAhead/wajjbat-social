@@ -5,6 +5,7 @@ import MainHeader from '../../components/MainHeader';
 import FeedCard from '../../components/FeedCard';
 import MainFooter from '../../components/MainFooter';
 import { BrowserRouter as Router, Link, useLocation } from 'react-router-dom';
+import Feed from '../Feed';
 
 export default function QueryParamsExample() {
   return (
