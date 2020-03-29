@@ -60,6 +60,8 @@ export default function SimpleTabs() {
 
   return (
     <div>
+      <MainHeader />
+
       <div>
         <MainHeader />
         <div className="headerContainer">
