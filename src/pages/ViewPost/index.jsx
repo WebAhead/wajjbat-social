@@ -35,7 +35,6 @@ export default function ViewPost({ scrollToComments }) {
   };
   if(scrollToComments)scrollToBottom()
 
-
   return (
     <div>
       <MainHeader />
@@ -56,7 +55,7 @@ export default function ViewPost({ scrollToComments }) {
         />
       </div>
       <div className="commentSection" id="commentSection">
-        <CommentSection reply title/>
+        <CommentSection reply title scrollToComments={scrollToComments}/>
       </div>
     </div>
   );
