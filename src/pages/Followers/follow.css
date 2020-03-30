@@ -1,0 +1,18 @@
+.barfollow {
+  background-color: #21b5a2;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 60px;
+}
+.barfollow :hover {
+  border-style: solid;
+  border-color: #21b5a2 #21b5a2 red #21b5a2;
+}
+
+.Text {
+  text-align: center;
+  font-size: x-large;
+  margin-top: 12px !important;
+}

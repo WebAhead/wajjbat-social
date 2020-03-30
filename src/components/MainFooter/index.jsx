@@ -36,43 +36,24 @@ export default function MainFooter() {
 
   return (
     <div>
-      
-      <BottomNavigation
-        value={value}
-        onChange={handleChange}
-        className={classes.root} 
-      >
+
+      <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
         <Link href="/">
-        <BottomNavigationAction
-          label="Home"
-          value="home"
-          className={classes.label}
-          icon={<HomeIcon className={classes.icons}/>}
-        />
+          <BottomNavigationAction label="Home" value="home" className={classes.label} icon={<HomeIcon className={classes.icons} />} />
         </Link>
-        <Link href="/Profile">
-        <BottomNavigationAction
-          label="Favorites"
-          value="favorites"
-          className={classes.label}
-          icon={<FavoriteBorderIcon className={classes.icons} />}
-        />
+        <Link href="/profile?name=Favorite">
+          <BottomNavigationAction
+            label="Favorites"
+            value="favorites"
+            className={classes.label}
+            icon={<FavoriteBorderIcon className={classes.icons} />}
+          />
         </Link>
         <Link href="/AddPost">
-        <BottomNavigationAction
-          label="Add Post"
-          value="post"
-          className={classes.label}
-          icon={<AddBoxIcon className={classes.icons} />}
-        />
+          <BottomNavigationAction label="Add Post" value="post" className={classes.label} icon={<AddBoxIcon className={classes.icons} />} />
         </Link>
         <Link href="/Profile">
-        <BottomNavigationAction
-          label="Profile"
-          value="profile"
-          className={classes.label}
-          icon={<PermIdentityIcon className={classes.icons} />}
-        />
+          <BottomNavigationAction label="Profile" value="profile" className={classes.label} icon={<PermIdentityIcon className={classes.icons} />} />
         </Link>
       </BottomNavigation>
     </div>
