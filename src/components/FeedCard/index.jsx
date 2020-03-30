@@ -36,7 +36,7 @@ export default function FeedCard({
     <div className={classes.mainContainer}>
       <Card className={classes.root}>
         <CardHeader userName={userName} />
-        <PostDetails postTitle={postTitle} isExpanded={isExpanded} />
+        <PostDetails postTitle={postTitle} isExpanded={isExpanded} setScrollToComments={setScrollToComments}/>
         <Link to="ViewPost" onClick={() => setScrollToComments(true)}>
           <CommentSection/>
         </Link>
