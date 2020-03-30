@@ -29,7 +29,7 @@ export default function StyledDropzone(props) {
         borderStyle: 'dashed',
         backgroundColor: '#fafafa',
         color: '#bdbdbd',
-        height: '40px',
+        height: '80px',
         outline: 'none',
         transition: 'border .24s ease-in-out',
         ...(props.width && { width: props.width }),
