@@ -7,6 +7,7 @@ import PostDetails from "../../components/PostDetails";
 import CommentSection from "../../components/CommentSection";
 import CardHeader from "../../components/CardHeader";
 import MainHeader from "../../components/MainHeader";
+import MainFooter from '../../components/MainFooter';
 
 import "./style.css";
 
@@ -54,9 +55,12 @@ export default function ViewPost({ scrollToComments }) {
           numerical
         />
       </div>
-      <div className="commentSection" id="commentSection">
+
+      <div className="commentSection" id="commentSection" style={{paddingBottom:60}}>
         <CommentSection reply title scrollToComments={scrollToComments}/>
       </div>
+      
+      <MainFooter/>
     </div>
   );
 }
