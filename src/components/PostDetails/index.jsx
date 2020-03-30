@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PostDetails({ postTitle, isExpanded }) {
+export default function PostDetails({ postTitle, isExpanded,setScrollToComments }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -62,7 +62,7 @@ export default function PostDetails({ postTitle, isExpanded }) {
   };
   return (
     <React.Fragment>
-        <Link to='ViewPost'>
+        <Link to='ViewPost' onClick={() => setScrollToComments(false)}>
       <CardMedia className={classes.media} image={pancakeExample} />
       </Link>
       <CardActions disableSpacing>

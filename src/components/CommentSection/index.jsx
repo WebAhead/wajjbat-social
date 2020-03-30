@@ -3,9 +3,8 @@ import { Button, Comment, Form, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import comments from "./comments.json";
 import "./style.css";
-export default function CommentSection({ reply, title }) {
-  const [collapsed, setCollapsed] = React.useState(true);
-
+export default function CommentSection({ reply, title,scrollToComments }) {
+  const [collapsed, setCollapsed] = React.useState(scrollToComments?false:true);
   const handleCollapsed = e => {
     setCollapsed(!collapsed);
     e.target.textContent = collapsed ? "hide comments" : "show all comments";
