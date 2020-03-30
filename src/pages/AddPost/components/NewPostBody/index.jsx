@@ -6,8 +6,11 @@ import TextField from "@material-ui/core/TextField";
 export default function NewPostBody({
   foodTags,
   setFoodTags,
+  howManyPeople,
   setHowManyPeople,
+  difficulty,
   setDifficulty,
+  time,
   setTime,
   ingredients,
   setIngredients,
@@ -19,7 +22,6 @@ export default function NewPostBody({
   const [ingredientQuantity, setIngredientQuantity] = React.useState("0");
   const [ingredientName, setIngredientName] = React.useState("");
   const [stepText, setStepText] = React.useState("");
-  const foodTagOptions = ["Sweet", "Gluten-Free", "Cold"];
   //Helper functions
   const handleFoodTagChange = key => event =>
     setFoodTags({ ...foodTags, [key]: event.target.checked });
@@ -43,10 +45,10 @@ export default function NewPostBody({
     <div>
       <h3 className="addFoodTags">Add Food Tags</h3>
       <div className="foodTagsWrapper">
-        {foodTagOptions.map(tag => (
+        {Object.keys(foodTags).map(tag => (
           <div>
             <Switch
-              checked={state.checkedA}
+              checked={foodTags[tag]}
               onChange={handleFoodTagChange(tag)}
             ></Switch>
             <label>{tag}</label>
@@ -60,23 +62,24 @@ export default function NewPostBody({
           type="number"
           pattern="[0-9]"
           className="peopleQuantity"
-          placeholder="0"
+          value={howManyPeople}
           onChange={handlePeopleChange}
         />
       </div>
       <div className="difficultySection">
         <h3 className="difficultyTag">Difficulty</h3>
         <select className="difficultyInput" onChange={handleDifficultyChange}>
-          <option value="Easy">Easy</option>
-          <option value="Meduim">Meduim</option>
-          <option value="Hard">Hard</option>
+          {/* In case you want to add options, add them here, and the default state can be changed in AddPost index */}
+          <option selected={difficulty=='Easy'} value="Easy">Easy</option>
+          <option selected={difficulty=='Meduim'} value="Meduim">Meduim</option>
+          <option selected={difficulty=='Hard'} value="Hard">Hard</option>
         </select>
       </div>
       <div className="timeSection">
         <h3 className="timeTag">How long it takes to prepare?</h3>
         <input
           className="timeQuantity"
-          placeholder="0"
+          value={time}
           onChange={handleTimeChange}
         />
       </div>
