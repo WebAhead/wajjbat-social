@@ -2,11 +2,9 @@ import React from 'react';
 import './profile.css';
 import Button from '@material-ui/core/Button';
 import MainHeader from '../../components/MainHeader';
-import FeedCard from '../../components/FeedCard';
 import MainFooter from '../../components/MainFooter';
 import { BrowserRouter as Router, Link, useLocation } from 'react-router-dom';
-import Feed from '../Feed';
-
+import PostDetails from '../../components/PostDetails';
 export default function QueryParamsExample() {
   return (
     <Router>
@@ -23,6 +21,7 @@ function QueryParamsDemo() {
 
   return (
     <div>
+      <MainHeader />
       <div>
         <div className="headerContainer">
           <div>
@@ -30,6 +29,14 @@ function QueryParamsDemo() {
               followers
             </Button>
           </div>
+          <a>
+            <img
+              className="profileimg"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5awDmi4At0iNdGyH7xWmHvkLYutIXqGzXFWQcjxakOrmjfj1I"
+              alt="profileimg"
+            ></img>
+            <h3>Name</h3>
+          </a>
           <div>
             <Button className="follow" variant="contained" href="/followers?name=following">
               following
@@ -56,16 +63,15 @@ function QueryParamsDemo() {
 
 function Child({ name }) {
   return (
-    <div>
-      {name ? (
-        <h3>
-          The <code>name</code> in the query string is &quot;{name}
-          &quot;
-        </h3>
+    <div className="postContainer">
+      {name == 'Favorite' ? (
+        <h3></h3>
       ) : (
-        <h3>
-          The <code>MyPost</code> in the query string is &quot; MyPost &quot;
-        </h3>
+        [...Array(10)].map(() => (
+          <div className="cardPost">
+            <PostDetails postTitle="fluffy pancake" noIcon noDesc />
+          </div>
+        ))
       )}
     </div>
   );

@@ -1,5 +1,4 @@
 .list {
-  margin-top: 100px !important;
   margin-left: 10% !important;
 }
 .line {
@@ -12,10 +11,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 10px !important;
 }
 .button {
-  margin-left: 150px !important;
+  margin-left: 120px !important;
   background-color: white !important;
   color: black !important;
+  border: 5px solid #21b5a2 !important;
 }

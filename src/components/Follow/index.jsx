@@ -20,10 +20,10 @@ export default function AlignItemsList() {
           secondary={
             <React.Fragment>
               <div className="line">
-                <Typography component="span" variant="body2" className="inline" color="textPrimary">
+                <Typography component="span" className="inline" color="textPrimary">
                   Ali Connors
                   <div>
-                    <Button variant="contained" color="secondary" className="button">
+                    <Button variant="contained" className="button">
                       Unfollow
                     </Button>
                   </div>
@@ -44,7 +44,7 @@ export default function AlignItemsList() {
         <ListItemText
           secondary={
             <React.Fragment>
-              <Typography component="span" variant="body2" className="inline" color="textPrimary">
+              <Typography component="span" className="inline" color="textPrimary">
                 Adeeli fsd
               </Typography>
             </React.Fragment>
@@ -59,7 +59,7 @@ export default function AlignItemsList() {
         <ListItemText
           secondary={
             <React.Fragment>
-              <Typography component="span" variant="body2" className="inline" color="textPrimary">
+              <Typography component="span" className="inline" color="textPrimary">
                 dfsdf Confsdfors
               </Typography>
             </React.Fragment>

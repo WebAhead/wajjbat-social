@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   logo: {
     width: 25,
     height: 25,
-    marginLeft: 15
+    marginLeft: 5
   },
   readMore: {
     fontSize: 10,
@@ -53,7 +53,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PostDetails({ postTitle, isExpanded,setScrollToComments }) {
+export default function PostDetails({
+  postTitle,
+  isExpanded,
+  noIcon,
+  noDesc,
+  setScrollToComments
+}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -62,33 +68,49 @@ export default function PostDetails({ postTitle, isExpanded,setScrollToComments 
   };
   return (
     <React.Fragment>
-        <Link to='ViewPost' onClick={() => setScrollToComments(false)}>
-      <CardMedia className={classes.media} image={pancakeExample} />
+      <Link to="ViewPost" onClick={() => setScrollToComments(false)}>
+        <CardMedia className={classes.media} image={pancakeExample} />
       </Link>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="like">
-          <ThumbUpIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <img className={classes.logo} src={halal} alt="halal" />
-        </IconButton>
-        <IconButton aria-label="share">
-          <img className={classes.logo} src={noGluten} alt="no gluten" />
-        </IconButton>
+        {noIcon ? (
+          <h5 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h5>
+        ) : (
+          <React.Fragment>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="like">
+              <ThumbUpIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+          </React.Fragment>
+        )}
+        <img
+          className={classes.logo}
+          src={halal}
+          alt="halal"
+          style={noIcon ? { width: 20, height: 20 } : {}}
+        />
+        <img
+          className={classes.logo}
+          src={noGluten}
+          alt="no gluten"
+          style={noIcon ? { width: 20, height: 20 } : {}}
+        />
       </CardActions>
-      <CardContent style={{ paddingTop: 0 }}>
-        <h2 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h2>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Tall and fluffy. These pancakes are just right. Topped with
-          strawberries and whipped cream, they are impossible to resist.
-          {expanded || isExpanded ? (
-            ` Lorem Ipsum is simply dummy text of 
+
+      {noDesc ? (
+        ""
+      ) : (
+        <CardContent style={{ paddingTop: 0 }}>
+          <h2 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h2>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Tall and fluffy. These pancakes are just right. Topped with
+            strawberries and whipped creatm, they are impossible to resist.
+            {expanded || isExpanded ? (
+              ` Lorem Ipsum is simply dummy text of 
         the printing and typesetting industry. 
         Lorem Ipsum has been the industry's 
         standard dummy text ever since the 1500s, 
@@ -102,18 +124,19 @@ export default function PostDetails({ postTitle, isExpanded,setScrollToComments 
          and more recently with desktop publishing 
          software like Aldus PageMaker including versions 
          of Lorem Ipsum.`
-          ) : (
-            <IconButton
-              className={classes.expand}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="read more"
-            >
-              <h6 className={classes.readMore}>Read More...</h6>
-            </IconButton>
-          )}
-        </Typography>
-      </CardContent>
+            ) : (
+              <IconButton
+                className={classes.expand}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="read more"
+              >
+                <h6 className={classes.readMore}>Read More...</h6>
+              </IconButton>
+            )}
+          </Typography>
+        </CardContent>
+      )}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <IconButton
           className={classes.CloseReadMore}

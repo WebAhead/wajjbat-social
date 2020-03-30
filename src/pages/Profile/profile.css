@@ -44,18 +44,19 @@
   border-color: #21b5a2 #21b5a2 red #21b5a2;
 }
 
+.cardPost {
+  width: 45%;
+  margin-left: 10px;
+}
+.postContainer {
+  padding-bottom: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .text {
   text-align: center;
   font-size: x-large;
   margin-top: 12px !important;
-}
-
-.card-img {
-  width: 50px;
-  height: 150px;
-}
-.card {
-  width: 300px;
-  height: 300px;
-  margin: 10px;
 }
