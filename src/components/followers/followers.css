@@ -1,0 +1,21 @@
+.list {
+  margin-top: 100px !important;
+  margin-left: 10% !important;
+}
+.line {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-right: 50px !important;
+}
+.inline {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 10px !important;
+}
+.button {
+  margin-left: 150px !important;
+  background-color: white !important;
+  color: black !important;
+}

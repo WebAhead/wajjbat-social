@@ -23,43 +23,31 @@ function QueryParamsDemo() {
 
   return (
     <div>
-      <MainHeader />
-
       <div>
-        <MainHeader />
         <div className="headerContainer">
           <div>
-            <Button className="follow" variant="contained" disableElevation>
+            <Button className="follow" variant="contained" href="/followers?name=followers">
               followers
             </Button>
           </div>
-          <a>
-            <img
-              className="profileimg"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5awDmi4At0iNdGyH7xWmHvkLYutIXqGzXFWQcjxakOrmjfj1I"
-              alt="profileimg"
-            ></img>
-            <h3>Name</h3>
-          </a>
           <div>
-            <Button className="follow" variant="contained" disableElevation>
+            <Button className="follow" variant="contained" href="/followers?name=following">
               following
             </Button>
           </div>
         </div>
-        <div>
-          <ul className="tabs">
-            <Link className="text" to="/profile?name=MyPost">
-              MyPost
-            </Link>
 
-            <Link className="text" to="/profile?name=Favorite">
-              Favorite
-            </Link>
-          </ul>
+        <ul className="tabs">
+          <Link className="text" to="/profile?name=MyPost">
+            MyPost
+          </Link>
 
-          <Child name={query.get('name')} />
-        </div>
+          <Link className="text" to="/profile?name=Favorite">
+            Favorite
+          </Link>
+        </ul>
+
+        <Child name={query.get('name')} />
       </div>
       <MainFooter />
     </div>
