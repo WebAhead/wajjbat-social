@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "../../components/CardHeader";
@@ -23,7 +24,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function FeedCard({userName,postTitle, isExpanded }) {
+export default function FeedCard({
+  userName,
+  postTitle,
+  isExpanded,
+  setScrollToComments
+}) {
   const classes = useStyles();
 
   return (
@@ -31,7 +37,9 @@ export default function FeedCard({userName,postTitle, isExpanded }) {
       <Card className={classes.root}>
         <CardHeader userName={userName} />
         <PostDetails postTitle={postTitle} isExpanded={isExpanded} />
-          <CommentSection />
+        <Link to="ViewPost" onClick={() => setScrollToComments(true)}>
+          <CommentSection/>
+        </Link>
       </Card>
     </div>
   );

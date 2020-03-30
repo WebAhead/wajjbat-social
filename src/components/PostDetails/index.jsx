@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import pancakeExample from "../../assets/images/pancakeExample.jpg";
 import halal from "../../assets/logos/halal.ico";
 import noGluten from "../../assets/logos/noGluten.ico";
@@ -61,8 +62,9 @@ export default function PostDetails({ postTitle, isExpanded }) {
   };
   return (
     <React.Fragment>
+        <Link to='ViewPost'>
       <CardMedia className={classes.media} image={pancakeExample} />
-
+      </Link>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
