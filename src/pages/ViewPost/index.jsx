@@ -2,7 +2,12 @@ import React from "react";
 import ListField from "../../components/ListField";
 import timePng from "../../assets/images/time.png";
 import servingPng from "../../assets/images/serving.png";
+import PostDetails from "../../components/PostDetails";
 import CommentSection from "../../components/CommentSection";
+import CardHeader from "../../components/CardHeader";
+import MainHeader from "../../components/MainHeader";
+import "./style.css";
+
 export default function ViewPost() {
   const ingredients = [
     "1 1/2 pounds ground beef",
@@ -21,19 +26,26 @@ export default function ViewPost() {
   ];
   return (
     <div>
-      <ListField
-        recipeInfo={ingredients}
-        type="ingredients_list"
-        name="Ingredients"
-      />
-      <ListField
-        recipeInfo={preparationSteps}
-        type="htp_list"
-        name="How to Prepare"
-        addons={addons}
-        numerical
-      />
-      <CommentSection />
+      <MainHeader />
+        <div className="postView">
+          <CardHeader userName="Yousef Rizik" />
+          <PostDetails postTitle="Fluffy Pancakes" isExpanded />
+          <ListField
+            recipeInfo={ingredients}
+            type="ingredients_list"
+            name="Ingredients"
+          />
+          <ListField
+            recipeInfo={preparationSteps}
+            type="htp_list"
+            name="How to Prepare"
+            addons={addons}
+            numerical
+          />
+        </div>
+        <div className='commentSection'>
+        <CommentSection />
+        </div>
     </div>
   );
 }
