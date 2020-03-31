@@ -23,10 +23,19 @@
 .ingredientElement, .stepElement, .fa-plus-circle{
     margin: 6px;
 }
-.displayingList{
-    text-align: center;
+.displayingListIngredients{
+    list-style: none;
+    overflow-wrap: break-word;
 }
-
+.displayingListSteps{
+    overflow-wrap: break-word;
+}
+.deleteIngredient{
+    margin-right: 10px;
+}
+.deleteStep{
+    margin-left: 10px;
+}
 hr{
     margin-top: 40px;
 }

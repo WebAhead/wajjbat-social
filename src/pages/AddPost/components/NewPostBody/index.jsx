@@ -35,11 +35,22 @@ export default function NewPostBody({
     setIngredientName(event.target.value);
   const handleIngredients = event =>
     setIngredients({ ...ingredients, [ingredientName]: ingredientQuantity });
+  const deleteIngredient = key => event => {
+    delete ingredients[key]
+    setIngredients({...ingredients});
+  }
 
   const handleStepText = event =>
     setStepText(event.target.value);
   const handleSteps = event =>
     setHowToPrepareSteps([ ...howToPrepareSteps, stepText]);
+  const deleteStep = key => event => {
+    var index = howToPrepareSteps.indexOf(key)
+    if (index !== -1) {
+      howToPrepareSteps.splice(index, 1);
+      setHowToPrepareSteps([...howToPrepareSteps]);
+    }
+  }
 
   return (
     <div>
@@ -98,11 +109,14 @@ export default function NewPostBody({
           placeholder="0"
           onChange={handleIngredientQuantity}
         />
+        <ul>
         {Object.entries(ingredients).map(ingredient => (
-          <li className="displayingList">
+          <li className="displayingListIngredients">
+          <i className="fas fa-trash-alt deleteIngredient" onClick={deleteIngredient(ingredient[0])}></i>
             {ingredient[1]} {ingredient[0]}
           </li>
         ))}
+        </ul>
       </div>
       <hr />
 
@@ -112,8 +126,9 @@ export default function NewPostBody({
         <input className="stepElement" placeholder="Your Steps" onChange={handleStepText}/>
         <ol>
         {howToPrepareSteps.map(step => (
-          <li className="displayingList">
+          <li className="displayingListSteps">
             {step}
+            <i className="fas fa-trash-alt deleteStep" onClick={deleteStep(step)}></i>
           </li>
         ))}
         </ol>
