@@ -10,3 +10,7 @@
 .MuiFilledInput-input{
     height: 45px !important;
 }
+.postTitleDiv{
+    margin-top: 15px;
+    margin-left: 20px;
+}

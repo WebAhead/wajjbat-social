@@ -7,6 +7,7 @@ import NewPostBody from "./components/NewPostBody";
 export default function AddPost() {
   const [imgURL, setImgURL] = React.useState('');
   const [postCaption, setPostCaption] = React.useState(null);
+  const [postTitle, setPostTitle] = React.useState(null);
   const [foodTags, setFoodTags] = React.useState({'Sweet': false, 'Gluten-Free': false, 'Cold': false});
   const [howManyPeople, setHowManyPeople] = React.useState(1);
   const [difficulty, setDifficulty] = React.useState('Easy');
@@ -26,7 +27,7 @@ export default function AddPost() {
   return (
     <div>
       <NewPostHeader shareState={shareState} setShareState={setShareState}/>
-      <ImageAndCaption setImgURL={setImgURL} setPostCaption={setPostCaption} />
+      <ImageAndCaption setPostTitle={setPostTitle} setImgURL={setImgURL} setPostCaption={setPostCaption} />
       <NewPostBody
         foodTags={foodTags}
         setFoodTags={setFoodTags}
