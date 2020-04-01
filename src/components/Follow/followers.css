@@ -12,7 +12,7 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.button {
+.unFollow {
   margin-left: 120px !important;
   background-color: white !important;
   color: black !important;
