@@ -1,0 +1,16 @@
+{
+  "user_id": "",
+
+  "followers": [
+    {
+      "user_name": "",
+      "profile_img": ""
+    }
+  ],
+  "following": [
+    {
+      "user_name": "",
+      "profile_img": ""
+    }
+  ]
+}
