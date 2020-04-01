@@ -11,18 +11,19 @@ import Link from '@material-ui/core/Link';
 const useStyles = makeStyles({
   root: {
     width: '100%',
-    background: 'linear-gradient(45deg, #21b5a2 30%, #21b5a2 90%)',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    background: 'white',
+    boxShadow: '0px -8px 49px -25px rgba(96,125,111,1)',
     display: 'flex',
     justifyContent: 'space-evenly',
     position: 'fixed',
     bottom: 0
   },
   icons: {
-    fontSize: 32
+    fontSize: 32,
+    boxShadow: '33px 33px 37px -39px rgba(17,20,19,1)'
   },
   label: {
-    color: '#ef5350'
+    color: '#21b5a2',
   }
 });
 

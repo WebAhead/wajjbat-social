@@ -24,19 +24,20 @@ const useStyles = makeStyles(theme => ({
     }
   },
   appBar: {
-    background: 'linear-gradient(45deg, #21b5a2 30%, #21b5a2 90%)',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    position: 'fixed'
+    background: 'white',
+    boxShadow: '0 3px 5px 2px rgba(33, 181, 162, 0.25)',
+    position: 'fixed',
+    color: '#21b5a2'
   },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    color: 'white',
+    backgroundColor: fade('#21b5a2', 0.55),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
+      backgroundColor: fade('#21b5a2', 0.65)
     },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
+    margin: '0px 10px 0px 15px',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
@@ -78,8 +79,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   logo: {
-    width: 50,
-    height: 50
+    width: 100,
+    height: 25,
+    margin: '5px',
+    marginLeft: '0'
   }
 }));
 
@@ -124,7 +127,7 @@ export default function MainHeader() {
     <div className={classes.grow}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
-          <img className={classes.logo} src={logoExample} alt="logo" />
+          <img className={classes.logo} src={require('../../assets/logos/logo.png')} alt="logo" />
           <Typography className={classes.title} variant="h6" noWrap>
             Wajjbat-Social
           </Typography>
