@@ -11,37 +11,38 @@ import Menu from '@material-ui/core/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import logoExample from '../../assets/logos/logoExample.png'
+import logoExample from '../../assets/logos/logoExample.png';
 
 const useStyles = makeStyles(theme => ({
   grow: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+      display: 'block'
+    }
   },
   appBar: {
-    background: 'linear-gradient(45deg, #f44336 30%, #b71c1c 90%)',
-    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-    position: 'fixed'
+    background: 'white',
+    boxShadow: '0 3px 5px 2px rgba(33, 181, 162, 0.25)',
+    position: 'fixed',
+    color: '#21b5a2'
   },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    color: 'white',
+    backgroundColor: fade('#21b5a2', 0.55),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade('#21b5a2', 0.65)
     },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
+    margin: '0px 10px 0px 15px',
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
+      width: 'auto'
+    }
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -50,10 +51,10 @@ const useStyles = makeStyles(theme => ({
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'inherit'
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -62,24 +63,26 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
+      width: '20ch'
+    }
   },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
+      display: 'flex'
+    }
   },
   sectionMobile: {
     display: 'flex',
     [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
+      display: 'none'
+    }
   },
   logo: {
-      width: 50,
-      height: 50
+    width: 100,
+    height: 25,
+    margin: '5px',
+    marginLeft: '0'
   }
 }));
 
@@ -92,7 +95,6 @@ export default function MainHeader() {
   const handleMobileMenuClose = () => {
     setMobile(null);
   };
-
 
   const handleMobileMenuOpen = event => {
     setMobile(event.currentTarget);
@@ -125,7 +127,7 @@ export default function MainHeader() {
     <div className={classes.grow}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
-          <img className={classes.logo} src={logoExample} alt='logo' />
+          <img className={classes.logo} src={require('../../assets/logos/logo.png')} alt="logo" />
           <Typography className={classes.title} variant="h6" noWrap>
             Wajjbat-Social
           </Typography>
@@ -137,7 +139,7 @@ export default function MainHeader() {
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
-                input: classes.inputInput,
+                input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
@@ -151,13 +153,7 @@ export default function MainHeader() {
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="read more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
+            <IconButton aria-label="read more" aria-controls={mobileMenuId} aria-haspopup="true" onClick={handleMobileMenuOpen} color="inherit">
               <MoreIcon />
             </IconButton>
           </div>
