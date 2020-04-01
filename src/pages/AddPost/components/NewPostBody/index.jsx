@@ -2,6 +2,9 @@ import React from "react";
 import "./style.css";
 import Switch from "@material-ui/core/Switch";
 import TextField from "@material-ui/core/TextField";
+import halalIcon from "../../../../assets/logos/halal.ico";
+import kasherIcon from "../../../../assets/logos/kasher.jpg";
+import glutenFreeIcon from "../../../../assets/logos/noGluten.ico";
 
 export default function NewPostBody({
   foodTags,
@@ -18,55 +21,92 @@ export default function NewPostBody({
   setHowToPrepareSteps
 }) {
   //Variables
-  const [state, setState] = React.useState(true);
+  const tagsIcons = {
+    Halal: halalIcon,
+    Kasher: kasherIcon,
+    GlutenFree: glutenFreeIcon
+  };
+  const [foodTagText, setFoodTagText] = React.useState("");
   const [ingredientQuantity, setIngredientQuantity] = React.useState("0");
   const [ingredientName, setIngredientName] = React.useState("");
   const [stepText, setStepText] = React.useState("");
   //Helper functions
-  const handleFoodTagChange = key => event =>
+  const handleFoodTagChange = key => event => {
     setFoodTags({ ...foodTags, [key]: event.target.checked });
+  };
+  const handleFoodTagText = event => setFoodTagText(event.target.value);
+  const handleAddTags = event =>
+    setFoodTags({ ...foodTags, [foodTagText]: true });
+  const deleteFoodTag = key => event => {
+    delete foodTags[key];
+    setFoodTags({ ...foodTags });
+  };
+
   const handlePeopleChange = event => setHowManyPeople(event.target.value);
   const handleDifficultyChange = event => setDifficulty(event.target.value);
   const handleTimeChange = event => setTime(event.target.value);
 
   const handleIngredientQuantity = event =>
     setIngredientQuantity(event.target.value);
-  const handleIngredientName = event => 
-    setIngredientName(event.target.value);
+  const handleIngredientName = event => setIngredientName(event.target.value);
   const handleIngredients = event =>
     setIngredients({ ...ingredients, [ingredientName]: ingredientQuantity });
   const deleteIngredient = key => event => {
-    delete ingredients[key]
-    setIngredients({...ingredients});
-  }
+    delete ingredients[key];
+    setIngredients({ ...ingredients });
+  };
 
-  const handleStepText = event =>
-    setStepText(event.target.value);
+  const handleStepText = event => setStepText(event.target.value);
   const handleSteps = event =>
-    setHowToPrepareSteps([ ...howToPrepareSteps, stepText]);
+    setHowToPrepareSteps([...howToPrepareSteps, stepText]);
   const deleteStep = key => event => {
-    var index = howToPrepareSteps.indexOf(key)
+    var index = howToPrepareSteps.indexOf(key);
     if (index !== -1) {
       howToPrepareSteps.splice(index, 1);
       setHowToPrepareSteps([...howToPrepareSteps]);
     }
-  }
+  };
 
   return (
     <div>
       <h3 className="addFoodTags">Add Food Tags</h3>
-      <div className="foodTagsWrapper">
-        {Object.keys(foodTags).map(tag => (
-          <div>
-            <Switch
-              checked={foodTags[tag]}
-              onChange={handleFoodTagChange(tag)}
-            ></Switch>
-            <label>{tag}</label>
-          </div>
-        ))}
+      <div className="constTagsWrapper">
+        {Object.keys(foodTags)
+          .slice(0, 3)
+          .map(tag => (
+            <div className="constTagItem">
+              <Switch
+                checked={foodTags[tag]}
+                onChange={handleFoodTagChange(tag)}
+              ></Switch>
+                {tag}{" "}
+                <img className="newPostIcons" src={tagsIcons[tag]} alt={tag} />
+            </div>
+          ))}
+      </div>
+      <div>
+        <i className="fas fa-plus-circle" onClick={handleAddTags}></i>
+        <input
+          className="tagElement"
+          placeholder="Other hashtags"
+          onChange={handleFoodTagText}
+        />
+        <ul className="varTagsWrapper">
+          {Object.keys(foodTags)
+            .slice(3, foodTags.length)
+            .map(tag => (
+              <li className="displayingFoodTags">
+                <i
+                  className="fas fa-trash-alt deleteTag"
+                  onClick={deleteFoodTag(tag)}
+                ></i>
+                <label>{tag}</label>
+              </li>
+            ))}
+        </ul>
       </div>
       <hr />
+
       <div className="peopleSection">
         <h3 className="howManyPeople">For How Many People?</h3>
         <input
@@ -81,9 +121,15 @@ export default function NewPostBody({
         <h3 className="difficultyTag">Difficulty</h3>
         <select className="difficultyInput" onChange={handleDifficultyChange}>
           {/* In case you want to add options, add them here, and the default state can be changed in AddPost index */}
-          <option selected={difficulty=='Easy'} value="Easy">Easy</option>
-          <option selected={difficulty=='Meduim'} value="Meduim">Meduim</option>
-          <option selected={difficulty=='Hard'} value="Hard">Hard</option>
+          <option selected={difficulty == "Easy"} value="Easy">
+            Easy
+          </option>
+          <option selected={difficulty == "Meduim"} value="Meduim">
+            Meduim
+          </option>
+          <option selected={difficulty == "Hard"} value="Hard">
+            Hard
+          </option>
         </select>
       </div>
       <div className="timeSection">
@@ -110,12 +156,15 @@ export default function NewPostBody({
           onChange={handleIngredientQuantity}
         />
         <ul>
-        {Object.entries(ingredients).map(ingredient => (
-          <li className="displayingListIngredients">
-          <i className="fas fa-trash-alt deleteIngredient" onClick={deleteIngredient(ingredient[0])}></i>
-            {ingredient[1]} {ingredient[0]}
-          </li>
-        ))}
+          {Object.entries(ingredients).map(ingredient => (
+            <li className="displayingListIngredients">
+              <i
+                className="fas fa-trash-alt deleteIngredient"
+                onClick={deleteIngredient(ingredient[0])}
+              ></i>
+              {ingredient[1]} {ingredient[0]}
+            </li>
+          ))}
         </ul>
       </div>
       <hr />
@@ -123,17 +172,23 @@ export default function NewPostBody({
       <div className="howToPrepareSection">
         <h3 className="howToPrepare">How To Prepare</h3>
         <i className="fas fa-plus-circle" onClick={handleSteps}></i>
-        <input className="stepElement" placeholder="Your Steps" onChange={handleStepText}/>
+        <input
+          className="stepElement"
+          placeholder="Your Steps"
+          onChange={handleStepText}
+        />
         <ol>
-        {howToPrepareSteps.map(step => (
-          <li className="displayingListSteps">
-            {step}
-            <i className="fas fa-trash-alt deleteStep" onClick={deleteStep(step)}></i>
-          </li>
-        ))}
+          {howToPrepareSteps.map(step => (
+            <li className="displayingListSteps">
+              {step}
+              <i
+                className="fas fa-trash-alt deleteStep"
+                onClick={deleteStep(step)}
+              ></i>
+            </li>
+          ))}
         </ol>
       </div>
-      <hr />
     </div>
   );
 }
