@@ -1,8 +1,29 @@
 .addFoodTags, .howManyPeople, .ingredients, .howToPrepare, .difficultyTag, .timeTag{
     margin: 10px;
 }
-.foodTagsWrapper{
+.constTagsWrapper{
     display: flex;
+    flex-wrap: wrap;
+} 
+.constTagItem{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.newPostIcons{
+    width: 40px;
+    margin-right: 30px;
+    margin-left: 10px;
+}
+.varTagsWrapper{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -5px;
+}
+.displayingFoodTags{
+    margin-top: 10px;
+    margin-right: 10px;
 }
 .peopleSection, .difficultySection, .timeSection{
     display: flex;
@@ -20,7 +41,7 @@
     width: 100px;
     text-align: center;
 }
-.ingredientElement, .stepElement, .fa-plus-circle{
+.ingredientElement, .stepElement, .fa-plus-circle, .tagElement{
     margin: 6px;
 }
 .displayingListIngredients{
@@ -29,6 +50,9 @@
 }
 .displayingListSteps{
     overflow-wrap: break-word;
+}
+.deleteTag{
+    margin-right: 5px;
 }
 .deleteIngredient{
     margin-right: 10px;
