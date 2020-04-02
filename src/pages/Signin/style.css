@@ -1,0 +1,31 @@
+.signin-form {
+  margin-top: 3em;
+}
+.google-btn {
+  color: #737373;
+  background: white;
+}
+
+.facebook-btn {
+  color: white;
+  background: blue;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  align-self: flex-end;
+  margin-left: 3rem;
+}
+
+.logout-btn:focus {
+  outline: 0;
+}
+.logo {
+  width: 250px;
+}
+
+.form-signin {
+  text-align: center;
+  color: #21b5a2;
+}
