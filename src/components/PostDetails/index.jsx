@@ -73,13 +73,13 @@ export default function PostDetails({ postTitle, isExpanded, noIcon, noDesc, set
           <h5 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h5>
         ) : (
           <React.Fragment>
-            <IconButton aria-label="add to favorites">
+            <IconButton aria-label="add to favorites" onClick={isLoggedIn ? () => 1 : movesignin}>
               <FavoriteIcon />
             </IconButton>
             <IconButton aria-label="like" onClick={isLoggedIn ? () => 1 : movesignin}>
               <ThumbUpIcon />
             </IconButton>
-            <IconButton aria-label="share">
+            <IconButton aria-label="share" onClick={isLoggedIn ? () => 1 : movesignin}>
               <ShareIcon />
             </IconButton>
           </React.Fragment>
