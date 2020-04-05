@@ -9,9 +9,10 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+import LogoutIcon from '@material-ui/icons/ExitToApp';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logoExample from '../../assets/logos/logoExample.png';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -86,7 +87,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function MainHeader() {
+export default function MainHeader({ isLoggedIn, setisLoggedIn }) {
   const classes = useStyles();
   const [mobile, setMobile] = React.useState(null);
 
@@ -99,7 +100,23 @@ export default function MainHeader() {
   const handleMobileMenuOpen = event => {
     setMobile(event.currentTarget);
   };
+  const logout = async () => {
+    if (isLoggedIn) {
+      try {
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/logout`, {
+          withCredentials: true
+        });
 
+        if (data.status) setisLoggedIn(false);
+        return 1;
+      } catch (error) {
+        console.log(error);
+        return 1;
+      }
+    }
+
+    return 1;
+  };
   const mobileMenuId = 'menuMobile';
 
   const renderMobileMenu = (
@@ -112,13 +129,11 @@ export default function MainHeader() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem onClick={logout}>
         <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
+          {/* <LogoutIcon /> */}
         </IconButton>
-        <p>Notifications</p>
+        <p>logout</p>
       </MenuItem>
     </Menu>
   );
@@ -128,9 +143,6 @@ export default function MainHeader() {
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <img className={classes.logo} src={require('../../assets/logos/logo.png')} alt="logo" />
-          <Typography className={classes.title} variant="h6" noWrap>
-            Wajjbat-Social
-          </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -148,7 +160,7 @@ export default function MainHeader() {
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 10 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+                {/* <LogoutIcon /> */}
               </Badge>
             </IconButton>
           </div>

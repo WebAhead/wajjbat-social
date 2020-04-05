@@ -5,13 +5,13 @@ import MainFooter from '../../components/MainFooter';
 import './style.css';
 import Link from '@material-ui/core/Link';
 
-export default function Feed({ setScrollToComments }) {
+export default function Feed({ setScrollToComments, isLoggedIn, setisLoggedIn }) {
   return (
     <div>
-      <MainHeader />
+      <MainHeader isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />
       <div className="feedCard">
         {[...Array(10)].map(() => (
-          <FeedCard userName="Yousef Rizik" postTitle="Fluffy Pancakes" setScrollToComments={setScrollToComments} />
+          <FeedCard userName="Yousef Rizik" postTitle="Fluffy Pancakes" setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} />
         ))}
       </div>
       <MainFooter />

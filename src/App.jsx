@@ -8,17 +8,20 @@ function App() {
   const [logged, setLogged] = React.useState(false);
   const [scrollToComments, setScrollToComments] = React.useState(false);
   useEffect(async () => {
-    try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/isLoggedIn`, {
-        withCredentials: true
-      });
+    async function isLoggedIn() {
+      try {
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/isLoggedIn`, {
+          withCredentials: true
+        });
 
-      if (data.id) setLogged(true);
-      return 1;
-    } catch (error) {
-      console.log(error);
-      return 1;
+        if (data.id) setLogged(true);
+        return 1;
+      } catch (error) {
+        console.log(error);
+        return 1;
+      }
     }
+    isLoggedIn();
   }, []);
 
   return (
@@ -36,7 +39,7 @@ function App() {
           <Route path="/Signin" component={Signin} />
 
           <Route path="/" exact>
-            <Feed setScrollToComments={setScrollToComments} />
+            <Feed setScrollToComments={setScrollToComments} isLoggedIn={logged} setisLoggedIn={setLogged} />
           </Route>
           <Route path="/" component={NotFound} />
         </Switch>
