@@ -4,17 +4,19 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   root: {
-      margin: theme.spacing(1),
-      marginTop: 15
-  },
+    margin: theme.spacing(1),
+    marginTop: 15
+  }
 }));
 
-export default function TextButtons() {
+export default function TextButtons({ onClick }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Button color="primary">Follow</Button>
+      <Button onClick={onClick} color="primary">
+        Follow
+      </Button>
     </div>
   );
 }
