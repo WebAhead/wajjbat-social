@@ -23,7 +23,7 @@ export default function AlignItemsList() {
                 <Typography component="span" className="inline" color="textPrimary">
                   Ali Connors
                   <div>
-                    <Button variant="contained" className="button">
+                    <Button variant="contained" className="unFollow">
                       Unfollow
                     </Button>
                   </div>
