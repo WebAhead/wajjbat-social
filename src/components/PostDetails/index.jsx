@@ -1,43 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import pancakeExample from "../../assets/images/pancakeExample.jpg";
-import halal from "../../assets/logos/halal.ico";
-import noGluten from "../../assets/logos/noGluten.ico";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import pancakeExample from '../../assets/images/pancakeExample.jpg';
+import halal from '../../assets/logos/halal.ico';
+import noGluten from '../../assets/logos/noGluten.ico';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
-    paddingTop: "56.25%" // 16:9
+    paddingTop: '56.25%' // 16:9
   },
   expand: {
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest
     })
   },
   CloseReadMore: {
-    transform: "rotate(180deg)",
-    opacity: "0.8",
+    transform: 'rotate(180deg)',
+    opacity: '0.8',
     marginLeft: 300,
-    cursor: "pointer"
+    cursor: 'pointer'
   },
   avatar: {
-    backgroundColor: "red"
+    backgroundColor: 'red'
   },
   logoContainer: {
-    display: "flex",
-    justifyContent: "flex-start"
+    display: 'flex',
+    justifyContent: 'flex-start'
   },
   logo: {
     width: 25,
@@ -46,25 +46,22 @@ const useStyles = makeStyles(theme => ({
   },
   readMore: {
     fontSize: 10,
-    opacity: "0.8",
-    display: "inline",
+    opacity: '0.8',
+    display: 'inline',
     margin: 0,
-    cursor: "pointer"
+    cursor: 'pointer'
   }
 }));
 
-export default function PostDetails({
-  postTitle,
-  isExpanded,
-  noIcon,
-  noDesc,
-  setScrollToComments
-}) {
+export default function PostDetails({ postTitle, isExpanded, noIcon, noDesc, setScrollToComments, isLoggedIn }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  const history = useHistory();
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+  const movesignin = () => {
+    history.push('/signin');
   };
   return (
     <React.Fragment>
@@ -76,39 +73,28 @@ export default function PostDetails({
           <h5 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h5>
         ) : (
           <React.Fragment>
-            <IconButton aria-label="add to favorites">
+            <IconButton aria-label="add to favorites" onClick={isLoggedIn ? () => 1 : movesignin}>
               <FavoriteIcon />
             </IconButton>
-            <IconButton aria-label="like">
+            <IconButton aria-label="like" onClick={isLoggedIn ? () => 1 : movesignin}>
               <ThumbUpIcon />
             </IconButton>
-            <IconButton aria-label="share">
+            <IconButton aria-label="share" onClick={isLoggedIn ? () => 1 : movesignin}>
               <ShareIcon />
             </IconButton>
           </React.Fragment>
         )}
-        <img
-          className={classes.logo}
-          src={halal}
-          alt="halal"
-          style={noIcon ? { width: 20, height: 20 } : {}}
-        />
-        <img
-          className={classes.logo}
-          src={noGluten}
-          alt="no gluten"
-          style={noIcon ? { width: 20, height: 20 } : {}}
-        />
+        <img className={classes.logo} src={halal} alt="halal" style={noIcon ? { width: 20, height: 20 } : {}} />
+        <img className={classes.logo} src={noGluten} alt="no gluten" style={noIcon ? { width: 20, height: 20 } : {}} />
       </CardActions>
 
       {noDesc ? (
-        ""
+        ''
       ) : (
         <CardContent style={{ paddingTop: 0 }}>
           <h2 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h2>
           <Typography variant="body2" color="textSecondary" component="p">
-            Tall and fluffy. These pancakes are just right. Topped with
-            strawberries and whipped creatm, they are impossible to resist.
+            Tall and fluffy. These pancakes are just right. Topped with strawberries and whipped creatm, they are impossible to resist.
             {expanded || isExpanded ? (
               ` Lorem Ipsum is simply dummy text of 
         the printing and typesetting industry. 
@@ -125,12 +111,7 @@ export default function PostDetails({
          software like Aldus PageMaker including versions 
          of Lorem Ipsum.`
             ) : (
-              <IconButton
-                className={classes.expand}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="read more"
-              >
+              <IconButton className={classes.expand} onClick={handleExpandClick} aria-expanded={expanded} aria-label="read more">
                 <h6 className={classes.readMore}>Read More...</h6>
               </IconButton>
             )}
@@ -138,12 +119,7 @@ export default function PostDetails({
         </CardContent>
       )}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <IconButton
-          className={classes.CloseReadMore}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="To The Top"
-        >
+        <IconButton className={classes.CloseReadMore} onClick={handleExpandClick} aria-expanded={expanded} aria-label="To The Top">
           <ExpandMoreIcon />
         </IconButton>
       </Collapse>

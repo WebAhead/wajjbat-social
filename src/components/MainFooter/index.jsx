@@ -7,6 +7,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import Link from '@material-ui/core/Link';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -23,16 +24,21 @@ const useStyles = makeStyles({
     boxShadow: '33px 33px 37px -39px rgba(17,20,19,1)'
   },
   label: {
-    color: '#21b5a2',
+    color: '#21b5a2'
   }
 });
 
-export default function MainFooter() {
+export default function MainFooter({ isLoggedIn }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const history = useHistory();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const movesignin = () => {
+    history.push('/signin');
   };
 
   return (
@@ -41,7 +47,7 @@ export default function MainFooter() {
         <Link href="/">
           <BottomNavigationAction label="Home" value="home" className={classes.label} icon={<HomeIcon className={classes.icons} />} />
         </Link>
-        <Link href="/profile?name=Favorite">
+        <Link href={isLoggedIn ? '/profile?name=Favorites' : '/signin'}>
           <BottomNavigationAction
             label="Favorites"
             value="favorites"
@@ -49,10 +55,10 @@ export default function MainFooter() {
             icon={<FavoriteBorderIcon className={classes.icons} />}
           />
         </Link>
-        <Link href="/AddPost">
+        <Link href={isLoggedIn ? '/AddPost' : '/signin'}>
           <BottomNavigationAction label="Add Post" value="post" className={classes.label} icon={<AddBoxIcon className={classes.icons} />} />
         </Link>
-        <Link href="/Profile">
+        <Link href={isLoggedIn ? '/Profile' : '/signin'}>
           <BottomNavigationAction label="Profile" value="profile" className={classes.label} icon={<PermIdentityIcon className={classes.icons} />} />
         </Link>
       </BottomNavigation>
