@@ -14,7 +14,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
-
+import {getRequest,postRequest,deleteRequest} from '../../utils/backEndFetch'
 const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
@@ -63,6 +63,15 @@ export default function PostDetails({ postTitle, isExpanded, noIcon, noDesc, set
   const movesignin = () => {
     history.push('/signin');
   };
+const getPosts=(n)=>{
+  getRequest('/nPosts?n='+n)
+  .then((response)=>console.log(response))
+}
+React.useEffect(()=>{
+  getPosts(10)
+},[])
+
+
   return (
     <React.Fragment>
       <Link to="ViewPost" onClick={() => setScrollToComments(false)}>
