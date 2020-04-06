@@ -5,10 +5,10 @@ import MainHeader from '../../components/MainHeader';
 import MainFooter from '../../components/MainFooter';
 import { BrowserRouter as Router, Link, useLocation } from 'react-router-dom';
 import PostDetails from '../../components/PostDetails';
-export default function QueryParamsExample() {
+export default function QueryParamsExample({ isLoggedIn }) {
   return (
     <Router>
-      <QueryParamsDemo />
+      <QueryParamsDemo isLoggedIn={isLoggedIn} />
     </Router>
   );
 }
@@ -16,7 +16,7 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-function QueryParamsDemo() {
+function QueryParamsDemo({ isLoggedIn }) {
   let query = useQuery();
 
   return (
@@ -56,7 +56,7 @@ function QueryParamsDemo() {
 
         <Child name={query.get('name')} />
       </div>
-      <MainFooter />
+      <MainFooter isLoggedIn={isLoggedIn} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import NewPostHeader from './components/NewPostHeader';
 import ImageAndCaption from './components/ImageAndCaption';
 import NewPostBody from './components/NewPostBody';
 
-export default function AddPost({ logged }) {
+export default function AddPost({ isLoggedIn }) {
   const [imgURL, setImgURL] = React.useState('');
   const [postCaption, setPostCaption] = React.useState(null);
   const [postTitle, setPostTitle] = React.useState(null);
@@ -14,7 +14,7 @@ export default function AddPost({ logged }) {
   const [ingredients, setIngredients] = React.useState({});
   const [howToPrepareSteps, setHowToPrepareSteps] = React.useState([]);
   const [shareState, setShareState] = React.useState(false);
-  console.log('ihuihu', logged);
+  console.log('ihuihu', isLoggedIn);
   React.useEffect(() => {
     if (shareState) {
       //send all the data to a route to the backend

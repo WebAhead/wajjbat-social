@@ -47,7 +47,7 @@ export default function MainFooter({ isLoggedIn }) {
         <Link href="/">
           <BottomNavigationAction label="Home" value="home" className={classes.label} icon={<HomeIcon className={classes.icons} />} />
         </Link>
-        <Link href={isLoggedIn ? '/profile?name=Favorite' : '/signin'}>
+        <Link href={isLoggedIn ? '/profile?name=Favorites' : '/signin'}>
           <BottomNavigationAction
             label="Favorites"
             value="favorites"
@@ -56,20 +56,10 @@ export default function MainFooter({ isLoggedIn }) {
           />
         </Link>
         <Link href={isLoggedIn ? '/AddPost' : '/signin'}>
-          <BottomNavigationAction
-            label="Add Post"
-            value="post"
-            className={classes.label}
-            icon={<AddBoxIcon className={classes.icons} onClick={isLoggedIn ? () => 1 : movesignin} />}
-          />
+          <BottomNavigationAction label="Add Post" value="post" className={classes.label} icon={<AddBoxIcon className={classes.icons} />} />
         </Link>
         <Link href={isLoggedIn ? '/Profile' : '/signin'}>
-          <BottomNavigationAction
-            label="Profile"
-            value="profile"
-            className={classes.label}
-            icon={<PermIdentityIcon className={classes.icons} onClick={isLoggedIn ? () => 1 : movesignin} />}
-          />
+          <BottomNavigationAction label="Profile" value="profile" className={classes.label} icon={<PermIdentityIcon className={classes.icons} />} />
         </Link>
       </BottomNavigation>
     </div>

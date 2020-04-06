@@ -5,7 +5,7 @@ import axios from 'axios';
 import './App.css';
 import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll';
 function App() {
-  const [logged, setLogged] = React.useState(false);
+  const [isLoggedIn, setisLoggedIn] = React.useState(false);
   const [scrollToComments, setScrollToComments] = React.useState(false);
   useEffect(async () => {
     async function isLoggedIn() {
@@ -14,7 +14,7 @@ function App() {
           withCredentials: true
         });
 
-        if (data.id) setLogged(true);
+        if (data.id) setisLoggedIn(true);
         return 1;
       } catch (error) {
         console.log(error);
@@ -29,17 +29,21 @@ function App() {
       <Router>
         <Switch>
           <Route path="/AddPost">
-            <AddPost logged={logged} />
+            <AddPost isLoggedIn={isLoggedIn} />
           </Route>
           <Route path="/ViewPost">
-            <ViewPost scrollToComments={scrollToComments} />
+            <ViewPost scrollToComments={scrollToComments} isLoggedIn={isLoggedIn} />
           </Route>
-          <Route path="/Profile" component={Profile} />
-          <Route path="/Followers" component={Followers} />
+          <Route path="/Profile">
+            <Profile isLoggedIn={isLoggedIn} />
+          </Route>
+          <Route path="/Followers">
+            <Followers isLoggedIn={isLoggedIn} />
+          </Route>
           <Route path="/Signin" component={Signin} />
 
           <Route path="/" exact>
-            <Feed setScrollToComments={setScrollToComments} isLoggedIn={logged} setisLoggedIn={setLogged} />
+            <Feed setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />
           </Route>
           <Route path="/" component={NotFound} />
         </Switch>

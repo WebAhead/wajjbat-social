@@ -14,7 +14,7 @@ export default function Feed({ setScrollToComments, isLoggedIn, setisLoggedIn })
           <FeedCard userName="Yousef Rizik" postTitle="Fluffy Pancakes" setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} />
         ))}
       </div>
-      <MainFooter />
+      <MainFooter isLoggedIn={isLoggedIn} />
     </div>
   );
 }
