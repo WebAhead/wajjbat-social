@@ -11,6 +11,8 @@
     height: 45px !important;
 }
 .postTitleDiv{
+    display: flex;
     margin-top: 15px;
-    margin-left: 20px;
+    margin-right: 100px;
+    justify-content: space-around;
 }

@@ -2,6 +2,8 @@ import React from 'react';
 import NewPostHeader from './components/NewPostHeader';
 import ImageAndCaption from './components/ImageAndCaption';
 import NewPostBody from './components/NewPostBody';
+import "./style.css";
+
 
 export default function AddPost({ isLoggedIn }) {
   const [imgURL, setImgURL] = React.useState('');
@@ -21,7 +23,7 @@ export default function AddPost({ isLoggedIn }) {
     }
   }, [shareState]);
   return (
-    <div>
+    <div className='addPostWrapper'>
       <NewPostHeader shareState={shareState} setShareState={setShareState} />
       <ImageAndCaption setPostTitle={setPostTitle} setImgURL={setImgURL} setPostCaption={setPostCaption} />
       <NewPostBody
