@@ -5,6 +5,10 @@ import TextField from "@material-ui/core/TextField";
 import halalIcon from "../../../../assets/logos/halal.ico";
 import kasherIcon from "../../../../assets/logos/kasher.jpg";
 import glutenFreeIcon from "../../../../assets/logos/noGluten.ico";
+import vegetarianIcon from "../../../../assets/logos/vegetarian.png";
+import veganIcon from "../../../../assets/logos/vegan.png";
+import Autosuggest from "react-autosuggest";
+import optionalFoodTags from "../../FoodTags.json";
 
 export default function NewPostBody({
   foodTags,
@@ -20,32 +24,42 @@ export default function NewPostBody({
   howToPrepareSteps,
   setHowToPrepareSteps
 }) {
-  //Variables
+  //Variables and states
   const tagsIcons = {
     Halal: halalIcon,
     Kasher: kasherIcon,
-    GlutenFree: glutenFreeIcon
+    GlutenFree: glutenFreeIcon,
+    Vegetarian: vegetarianIcon,
+    Vegan: veganIcon
   };
-  const [foodTagText, setFoodTagText] = React.useState("");
+  const [autoCompleteState, setAutoCompleteState] = React.useState({
+    value: "",
+    suggestions: []
+  });
   const [ingredientQuantity, setIngredientQuantity] = React.useState("0");
   const [ingredientName, setIngredientName] = React.useState("");
   const [stepText, setStepText] = React.useState("");
-  //Helper functions
+
+  //Helper functions:
+  //Food tags functions.
   const handleFoodTagChange = key => event => {
     setFoodTags({ ...foodTags, [key]: event.target.checked });
   };
-  const handleFoodTagText = event => setFoodTagText(event.target.value);
-  const handleAddTags = event =>
-    setFoodTags({ ...foodTags, [foodTagText]: true });
+  const handleAddTags = key => {
+    onSuggestionsClearRequested();
+    setFoodTags({ ...foodTags, [key]: true });
+  };
   const deleteFoodTag = key => event => {
     delete foodTags[key];
     setFoodTags({ ...foodTags });
   };
 
+  //People, difficulty and time functions.
   const handlePeopleChange = event => setHowManyPeople(event.target.value);
   const handleDifficultyChange = event => setDifficulty(event.target.value);
   const handleTimeChange = event => setTime(event.target.value);
 
+  //Ingredients functions.
   const handleIngredientQuantity = event =>
     setIngredientQuantity(event.target.value);
   const handleIngredientName = event => setIngredientName(event.target.value);
@@ -56,6 +70,7 @@ export default function NewPostBody({
     setIngredients({ ...ingredients });
   };
 
+  //How to prepare functions.
   const handleStepText = event => setStepText(event.target.value);
   const handleSteps = event =>
     setHowToPrepareSteps([...howToPrepareSteps, stepText]);
@@ -67,33 +82,85 @@ export default function NewPostBody({
     }
   };
 
+  //Auto complete functions.
+  const { value, suggestions } = autoCompleteState;
+
+  const getSuggestions = value => {
+    const inputValue = value.trim().toLowerCase();
+    const inputLength = inputValue.length;
+    return inputLength === 0
+      ? []
+      : optionalFoodTags.filter(
+          foodtag =>
+            foodtag.tag.toLowerCase().slice(0, inputLength) === inputValue
+        );
+  };
+  const renderSuggestion = suggestion => {
+    return (
+    <div>
+    <i className="fas fa-plus-circle" onClick={() => handleAddTags(suggestion.tag)}></i>
+    <label>{suggestion.tag}</label>
+    </div>
+    )
+  };
+  const onChange = (event, { newValue }) => {
+    setAutoCompleteState({
+      ...autoCompleteState,
+      value: event.target.value
+    });
+  };
+  const onSuggestionsFetchRequested = ({ value }) => {
+    setAutoCompleteState(prevAutoCompleteState => ({
+      ...prevAutoCompleteState,
+      suggestions: getSuggestions(value)
+    }));
+  };
+  const onSuggestionsClearRequested = () => {
+    setAutoCompleteState(prevAutoCompleteState => ({
+      ...prevAutoCompleteState,
+      suggestions: []
+    }));
+  };
+
+  const inputProps = {
+    placeholder: "Enter Other Tags",
+    value: autoCompleteState.value,
+    onChange: onChange,
+    style: {
+      marginTop: '10px',
+      marginLeft: '10px'
+    }
+  };
+
   return (
     <div>
       <h3 className="addFoodTags">Add Food Tags</h3>
       <div className="constTagsWrapper">
         {Object.keys(foodTags)
-          .slice(0, 3)
+          .slice(0, 5)
           .map(tag => (
             <div className="constTagItem">
               <Switch
                 checked={foodTags[tag]}
                 onChange={handleFoodTagChange(tag)}
               ></Switch>
-                {tag}{" "}
-                <img className="newPostIcons" src={tagsIcons[tag]} alt={tag} />
+              {tag}{" "}
+              <img className="newPostIcons" src={tagsIcons[tag]} alt={tag} />
             </div>
           ))}
       </div>
-      <div>
-        <i className="fas fa-plus-circle" onClick={handleAddTags}></i>
-        <input
-          className="tagElement"
-          placeholder="Other hashtags"
-          onChange={handleFoodTagText}
+      <div className="foodTagsInput">
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={onSuggestionsClearRequested}
+          renderSuggestion={renderSuggestion}
+          inputProps={inputProps}
         />
-        <ul className="varTagsWrapper">
+      </div>
+        <div className="varTagsWrapper">
           {Object.keys(foodTags)
-            .slice(3, foodTags.length)
+            .slice(5, foodTags.length)
             .map(tag => (
               <li className="displayingFoodTags">
                 <i
@@ -103,8 +170,7 @@ export default function NewPostBody({
                 <label>{tag}</label>
               </li>
             ))}
-        </ul>
-      </div>
+        </div>
       <hr />
 
       <div className="peopleSection">
