@@ -7,14 +7,18 @@ export default function AddPost({ isLoggedIn }) {
   const [imgURL, setImgURL] = React.useState('');
   const [postCaption, setPostCaption] = React.useState(null);
   const [postTitle, setPostTitle] = React.useState(null);
+<<<<<<< HEAD
+  const [foodTags, setFoodTags] = React.useState({'Halal': false, 'Kasher': false, 'GlutenFree': false, 'Vegan': false, 'Vegetarian': false});
+=======
   const [foodTags, setFoodTags] = React.useState({ Halal: false, Kasher: false, GlutenFree: false });
+>>>>>>> master
   const [howManyPeople, setHowManyPeople] = React.useState(1);
   const [difficulty, setDifficulty] = React.useState('Easy');
   const [time, setTime] = React.useState(0);
   const [ingredients, setIngredients] = React.useState({});
   const [howToPrepareSteps, setHowToPrepareSteps] = React.useState([]);
   const [shareState, setShareState] = React.useState(false);
-  console.log('ihuihu', isLoggedIn);
+  
   React.useEffect(() => {
     if (shareState) {
       //send all the data to a route to the backend

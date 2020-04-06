@@ -15,6 +15,28 @@
     margin-right: 30px;
     margin-left: 10px;
 }
+.foodTagsInput{
+    display: flex;
+
+}
+.react-autosuggest__input{
+  display: inline-block;
+  padding: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.react-autosuggest__suggestion{
+    list-style: none;
+    margin: 0 5px;
+    display: flex;
+}
+.react-autosuggest__suggestions-list{
+    margin-left: -40px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
 .varTagsWrapper{
     list-style: none;
     display: flex;
@@ -23,7 +45,7 @@
 }
 .displayingFoodTags{
     margin-top: 10px;
-    margin-right: 10px;
+    margin-left: 12px;
 }
 .peopleSection, .difficultySection, .timeSection{
     display: flex;
@@ -41,7 +63,7 @@
     width: 100px;
     text-align: center;
 }
-.ingredientElement, .stepElement, .fa-plus-circle, .tagElement{
+.ingredientElement, .stepElement, .fa-plus-circle{
     margin: 6px;
 }
 .displayingListIngredients{
@@ -67,6 +89,6 @@ hr{
     margin-top: 5px;
 }
 
-.fa-plus-circle:hover{
+.fas,.fa-plus-circle:hover{
     cursor: pointer;
 }
