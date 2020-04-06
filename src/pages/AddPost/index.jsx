@@ -2,16 +2,14 @@ import React from 'react';
 import NewPostHeader from './components/NewPostHeader';
 import ImageAndCaption from './components/ImageAndCaption';
 import NewPostBody from './components/NewPostBody';
+import "./style.css";
+
 
 export default function AddPost({ isLoggedIn }) {
   const [imgURL, setImgURL] = React.useState('');
   const [postCaption, setPostCaption] = React.useState(null);
   const [postTitle, setPostTitle] = React.useState(null);
-<<<<<<< HEAD
   const [foodTags, setFoodTags] = React.useState({'Halal': false, 'Kasher': false, 'GlutenFree': false, 'Vegan': false, 'Vegetarian': false});
-=======
-  const [foodTags, setFoodTags] = React.useState({ Halal: false, Kasher: false, GlutenFree: false });
->>>>>>> master
   const [howManyPeople, setHowManyPeople] = React.useState(1);
   const [difficulty, setDifficulty] = React.useState('Easy');
   const [time, setTime] = React.useState(0);
@@ -25,7 +23,7 @@ export default function AddPost({ isLoggedIn }) {
     }
   }, [shareState]);
   return (
-    <div>
+    <div className='addPostWrapper'>
       <NewPostHeader shareState={shareState} setShareState={setShareState} />
       <ImageAndCaption setPostTitle={setPostTitle} setImgURL={setImgURL} setPostCaption={setPostCaption} />
       <NewPostBody
