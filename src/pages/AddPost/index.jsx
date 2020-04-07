@@ -16,7 +16,7 @@ export default function AddPost({ isLoggedIn }) {
   const [ingredients, setIngredients] = React.useState({});
   const [howToPrepareSteps, setHowToPrepareSteps] = React.useState([]);
   const [shareState, setShareState] = React.useState(false);
-  
+
   React.useEffect(() => {
     if (shareState) {
       //send all the data to a route to the backend
