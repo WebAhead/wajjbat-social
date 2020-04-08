@@ -24,16 +24,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function FeedCard({ userName, postTitle, isExpanded, setScrollToComments, isLoggedIn }) {
+export default function FeedCard({ data, isExpanded, setScrollToComments, isLoggedIn }) {
   const classes = useStyles();
-
+  console.log(data)
   return (
     <div className={classes.mainContainer}>
       <Card className={classes.root}>
-        <CardHeader userName={userName} isLoggedIn={isLoggedIn} />
-        <PostDetails postTitle={postTitle} isExpanded={isExpanded} setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} />
+        <CardHeader userData={data.user_info} isFollowed={data.is_followed} isLoggedIn={isLoggedIn} />
+        <PostDetails postData={data.post_info} isFavorite={data.is_favorite} isLiked={data.is_liked} isExpanded={isExpanded} setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} />
         <Link to="ViewPost" onClick={() => setScrollToComments(true)}>
-          <CommentSection />
+          <CommentSection latest_comment={data.latest_comment}/>
         </Link>
       </Card>
     </div>

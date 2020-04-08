@@ -28,13 +28,3 @@ export const postRequest = (path, body) => {
       throw new Error(`fetch postRequest failed ${err}`);
     });
 };
-
-export const deleteRequest = (path, body) => {
-    return axios
-      .delete(API_BASE + path, body, {
-        withCredentials: true})
-      .then(checkResponse)
-      .catch(err => {
-        throw new Error(`fetch postRequest failed ${err}`);
-      });
-  };

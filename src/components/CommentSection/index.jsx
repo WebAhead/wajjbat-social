@@ -3,9 +3,16 @@ import { Button, Comment, Form, Header } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import comments from "./comments.json";
 import "./style.css";
-export default function CommentSection({ reply, title,scrollToComments }) {
-  const [collapsed, setCollapsed] = React.useState(scrollToComments?false:true);
-  const handleCollapsed = e => {
+export default function CommentSection({
+  reply,
+  title,
+  scrollToComments,
+  latest_comment,
+}) {
+  const [collapsed, setCollapsed] = React.useState(
+    scrollToComments ? false : true
+  );
+  const handleCollapsed = (e) => {
     setCollapsed(!collapsed);
     e.target.textContent = collapsed ? "hide comments" : "show all comments";
   };
@@ -21,20 +28,41 @@ export default function CommentSection({ reply, title,scrollToComments }) {
       )}
 
       <a onClick={handleCollapsed}>see all comments</a>
-      {comments.map((comment, i) => (
-        <Comment collapsed={comment.top ? "" : collapsed}>
-          <Comment.Avatar src={comment.avatar} />
+      {latest_comment ? (
+        <Comment collapsed={false}>
+          <Comment.Avatar src={latest_comment.user_info.profile_image} />
           <Comment.Content>
             <Comment.Author as="a">
-              {comment.author}{" "}
+              {latest_comment.user_info.first_name +
+                " " +
+                latest_comment.user_info.last_name}{" "}
               <Comment.Metadata>
-                <div>{comment.time}</div>
+                <div>{latest_comment.created}</div>
               </Comment.Metadata>
             </Comment.Author>
-            <Comment.Text>{comment.text}</Comment.Text>
+            <Comment.Text>{latest_comment.comment}</Comment.Text>
           </Comment.Content>
         </Comment>
-      ))}
+      ) : latest_comment === false || comments.length === 0?(
+        <Comment collapsed={false}>
+          <Comment.Text>There is no comments, be the First</Comment.Text>
+        </Comment>
+      ) : (
+        comments.map((comment, i) => (
+          <Comment collapsed={collapsed}>
+            <Comment.Avatar src={comment.avatar} />
+            <Comment.Content>
+              <Comment.Author as="a">
+                {comment.author}{" "}
+                <Comment.Metadata>
+                  <div>{comment.time}</div>
+                </Comment.Metadata>
+              </Comment.Author>
+              <Comment.Text>{comment.text}</Comment.Text>
+            </Comment.Content>
+          </Comment>
+        ))
+      )}
       {reply ? (
         <Form reply>
           <Form.TextArea />

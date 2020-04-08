@@ -5,6 +5,10 @@ import MainHeader from '../../components/MainHeader';
 import MainFooter from '../../components/MainFooter';
 import { BrowserRouter as Router, Link, useLocation } from 'react-router-dom';
 import PostDetails from '../../components/PostDetails';
+import {
+  getRequest
+} from "../../utils/backEndFetch";
+
 export default function QueryParamsExample({ isLoggedIn }) {
   return (
     <Router>

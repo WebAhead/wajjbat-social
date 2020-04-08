@@ -5,7 +5,7 @@ import axios from 'axios';
 import './App.css';
 import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll';
 function App() {
-  const [isLoggedIn, setisLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [scrollToComments, setScrollToComments] = React.useState(false);
   useEffect(async () => {
     async function isLoggedIn() {
@@ -14,7 +14,7 @@ function App() {
           withCredentials: true
         });
 
-        if (data.id) setisLoggedIn(true);
+        if (data.id) setIsLoggedIn(true);
         return 1;
       } catch (error) {
         console.log(error);
@@ -43,7 +43,7 @@ function App() {
           <Route path="/Signin" component={Signin} />
 
           <Route path="/" exact>
-            <Feed setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />
+            <Feed setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
           <Route path="/" component={NotFound} />
         </Switch>

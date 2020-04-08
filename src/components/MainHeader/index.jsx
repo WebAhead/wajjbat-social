@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function MainHeader({ isLoggedIn, setisLoggedIn }) {
+export default function MainHeader({ isLoggedIn, setIsLoggedIn }) {
   const classes = useStyles();
   const [mobile, setMobile] = React.useState(null);
 
@@ -107,7 +107,7 @@ export default function MainHeader({ isLoggedIn, setisLoggedIn }) {
           withCredentials: true
         });
 
-        if (data.status) setisLoggedIn(false);
+        if (data.status) setIsLoggedIn(false);
         return 1;
       } catch (error) {
         console.log(error);
