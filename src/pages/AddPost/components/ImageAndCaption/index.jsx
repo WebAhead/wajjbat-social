@@ -19,6 +19,8 @@ export default function ImageAndCatpion({setPostTitle, setImgURL, setPostCaption
           variant="outlined"
           onChange={handleTitleChange}
         />
+              <div></div>
+
       </div>
       <div className="imageAndCaption">
         <ImageInput height="150px" onChange={url => setImgURL(url)} />
