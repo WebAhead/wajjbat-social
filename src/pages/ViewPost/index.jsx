@@ -1,49 +1,108 @@
-import React from 'react';
-import { animateScroll } from 'react-scroll';
-import ListField from '../../components/ListField';
-import timePng from '../../assets/images/time.png';
-import servingPng from '../../assets/images/serving.png';
-import PostDetails from '../../components/PostDetails';
-import CommentSection from '../../components/CommentSection';
-import CardHeader from '../../components/CardHeader';
-import MainHeader from '../../components/MainHeader';
-import MainFooter from '../../components/MainFooter';
+import React from "react";
+import { animateScroll } from "react-scroll";
+import ListField from "../../components/ListField";
+import timePng from "../../assets/images/time.png";
+import servingPng from "../../assets/images/serving.png";
+import PostDetails from "../../components/PostDetails";
+import CommentSection from "../../components/CommentSection";
+import CardHeader from "../../components/CardHeader";
+import MainHeader from "../../components/MainHeader";
+import MainFooter from "../../components/MainFooter";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { getRequest } from "../../utils/backEndFetch";
 
-import './style.css';
+import "./style.css";
 
-export default function ViewPost({ scrollToComments, isLoggedIn }) {
-  const ingredients = ['1 1/2 pounds ground beef', '1 egg', '1 onion chopped', '1 cup milk'];
-  const preparationSteps = [
-    'Mix flour, baking powder, salt, and sugar In a medium-size mixing bowl or large glass measuring cup, whisk together your dry ingredients (or follow directions for premade pancake mix).',
-    'Mix milk, eggs, and oil In a separate bowl, whisk together the wet ingredients (milk, eggs, vegetable oil, or melted butter) until the egg is broken up (this will prevent overmixing in the next step).',
-    'Mix dry ingredients with wet ingredients Add the wet ingredients to the bowl with the dry ingredients. Stir them'
-  ];
+export default function ViewPost({
+  currentPostInfo,
+  scrollToComments,
+  isLoggedIn,
+}) {
+  const [indicator, setIndicator] = React.useState(true);
+  const [allComments, setAllComments] = React.useState([]);
+
+  const ingredients = Object.entries(currentPostInfo.postData.ingredients).map(
+    (ingredient) => `${ingredient[1]} ${ingredient[0]}`
+  );
+
+  const preparationSteps = currentPostInfo.postData.howtoprepare;
+
   const addons = [
-    { title: 'Preparation', info: '1 h 10 m', image: timePng },
-    { title: 'Serving', info: '8 servings', image: servingPng }
+    {
+      title: "Preparation",
+      info: currentPostInfo.postData.timetoprepare,
+      image: timePng,
+    },
+    {
+      title: "Serving",
+      info: `${currentPostInfo.postData.howmanypeople} servings`,
+      image: servingPng,
+    },
   ];
 
   const scrollToBottom = () => {
     animateScroll.scrollToBottom({
-      smooth: 'easeInOutQuint',
-      containerId: 'commentSection'
+      smooth: "easeInOutQuint",
+      containerId: "commentSection",
     });
   };
+
   if (scrollToComments) scrollToBottom();
+
+  const getAllComments= () => {
+    getRequest(`/comments?post_id=${currentPostInfo.postData._id}`).then((response) => {
+      setAllComments(response.data);
+      setIndicator(false);
+    });
+  };
+
+  React.useEffect(() => {
+    getAllComments();
+  }, [currentPostInfo]);
 
   return (
     <div>
       <MainHeader />
       <div className="postView">
-        <CardHeader userName="Yousef Rizik" />
-        <PostDetails postTitle="Fluffy Pancakes" isExpanded />
-        <ListField recipeInfo={ingredients} type="ingredients_list" name="Ingredients" />
-        <ListField recipeInfo={preparationSteps} type="htp_list" name="How to Prepare" addons={addons} numerical />
+        <CardHeader
+          userData={currentPostInfo.userData}
+          isFollowed={currentPostInfo.isFollowed}
+          isLoggedIn={isLoggedIn}
+        />
+        <PostDetails
+          postData={currentPostInfo.postData}
+          isFavorite={currentPostInfo.isFavorite}
+          isLiked={currentPostInfo.isLiked}
+          isExpanded
+          isLoggedIn={isLoggedIn}
+        />
+        <ListField
+          recipeInfo={ingredients}
+          type="ingredients_list"
+          name="Ingredients"
+        />
+        <ListField
+          recipeInfo={preparationSteps}
+          type="htp_list"
+          name="How to Prepare"
+          addons={addons}
+          numerical
+        />
       </div>
 
-      <div className="commentSection" id="commentSection" style={{ paddingBottom: 60 }}>
-        <CommentSection reply title scrollToComments={scrollToComments} />
-      </div>
+      <div
+        className="commentSection"
+        id="commentSection"
+        style={{ paddingBottom: 60 }}
+      >
+        {indicator ? (
+        <div className="indicator">
+          <CircularProgress disableShrink />
+        </div>
+      ) : (
+        <CommentSection comments={allComments} postId={currentPostInfo.postData._id} reply title scrollToComments={scrollToComments} />
+      )}
+        </div>
 
       <MainFooter isLoggedIn={isLoggedIn} />
     </div>

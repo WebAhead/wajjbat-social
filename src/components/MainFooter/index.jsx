@@ -47,10 +47,10 @@ export default function MainFooter({ isLoggedIn }) {
         <Link href="/">
           <BottomNavigationAction label="Home" value="home" className={classes.label} icon={<HomeIcon className={classes.icons} />} />
         </Link>
-        <Link href={isLoggedIn ? '/profile?name=Favorites' : '/signin'}>
+        <Link href={isLoggedIn ? '/profile?name=userFavorites' : '/signin'}>
           <BottomNavigationAction
-            label="Favorites"
-            value="favorites"
+            label="userFavorites"
+            value="userFavorites"
             className={classes.label}
             icon={<FavoriteBorderIcon className={classes.icons} />}
           />

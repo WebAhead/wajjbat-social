@@ -61,6 +61,7 @@ export default function PostDetails({
   postData,
   isFavorite,
   isLiked,
+  viewPostData,
   isExpanded,
   noIcon,
   noDesc,
@@ -72,7 +73,7 @@ export default function PostDetails({
   const [like, setLike] = React.useState(isLiked);
   const [favorite, setFavorite] = React.useState(isFavorite);
   const history = useHistory();
-  const tags=[ halal,noGluten,kasher,vegan,vegetarian]
+  const tags = [halal, noGluten, kasher, vegan, vegetarian];
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -82,17 +83,22 @@ export default function PostDetails({
 
   const setAction = (path) => {
     postRequest(path, { post_id: postData._id }).then((response) => {
-      path.includes("like") ? setLike(!like) : setFavorite(!favorite);
+      path.includes("ike") ? setLike(!like) : setFavorite(!favorite);
     });
   };
 
-const firstParagraph= postData.caption.substring(0,100)+(postData.caption.length>100?'...':'');
-const  secondParagraph = postData.caption.substring(100,postData.caption.length+1)
-
+  const firstParagraph = postData.caption.substring(0, 100);
+  const secondParagraph = postData.caption.substring(
+    100,
+    postData.caption.length + 1
+  );
   return (
     <React.Fragment>
-      <Link to="ViewPost" onClick={() => setScrollToComments(false)}>
-        <CardMedia className={classes.media} image={pancakeExample} />
+      <Link
+        to="ViewPost"
+        onClick={() =>viewPostData(false)}
+      >
+        <CardMedia className={classes.media} image={postData.img_url} />
       </Link>
       <CardActions disableSpacing>
         {noIcon ? (
@@ -135,14 +141,15 @@ const  secondParagraph = postData.caption.substring(100,postData.caption.length+
           </React.Fragment>
         )}
         {Object.entries(postData.tags).map((tag, i) => {
-
-          if (tag[1]&&tags.length>i) {
-            return <img
-              className={classes.logo}
-              src={tags[i]}
-              alt={tag[0]}
-              style={noIcon ? { width: 20, height: 20 } : {}}
-            />;
+          if (tag[1] && tags.length > i) {
+            return (
+              <img
+                className={classes.logo}
+                src={tags[i]}
+                alt={tag[0]}
+                style={noIcon ? { width: 20, height: 20 } : {}}
+              />
+            );
           }
         })}
       </CardActions>
@@ -154,18 +161,25 @@ const  secondParagraph = postData.caption.substring(100,postData.caption.length+
           <h2 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postData.title}</h2>
           <Typography variant="body2" color="textSecondary" component="p">
             {firstParagraph}
-            {secondParagraph?expanded || isExpanded ? (
-             {secondParagraph}
+            {secondParagraph ? (
+              expanded || isExpanded ? (
+                secondParagraph
+              ) : (
+                <React.Fragment>
+                  ...
+                <IconButton
+                  className={classes.expand}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="read more"
+                >
+                  <h6 className={classes.readMore}>Read More...</h6>
+                </IconButton>
+                </React.Fragment>
+              )
             ) : (
-              <IconButton
-                className={classes.expand}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="read more"
-              >
-                <h6 className={classes.readMore}>Read More...</h6>
-              </IconButton>
-            ):''}
+              ""
+            )}
           </Typography>
         </CardContent>
       )}

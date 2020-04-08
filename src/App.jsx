@@ -7,6 +7,8 @@ import { scrollToBottom } from 'react-scroll/modules/mixins/animate-scroll';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [scrollToComments, setScrollToComments] = React.useState(false);
+  const [currentPostInfo, setCurrentPostInfo] = React.useState({});
+
   useEffect(async () => {
     async function isLoggedIn() {
       try {
@@ -32,7 +34,7 @@ function App() {
             <AddPost isLoggedIn={isLoggedIn} />
           </Route>
           <Route path="/ViewPost">
-            <ViewPost scrollToComments={scrollToComments} isLoggedIn={isLoggedIn} />
+            <ViewPost isLoggedIn={isLoggedIn}  currentPostInfo={currentPostInfo} scrollToComments={scrollToComments} isLoggedIn={isLoggedIn} />
           </Route>
           <Route path="/Profile">
             <Profile isLoggedIn={isLoggedIn} />
@@ -43,7 +45,7 @@ function App() {
           <Route path="/Signin" component={Signin} />
 
           <Route path="/" exact>
-            <Feed setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Feed setCurrentPostInfo={setCurrentPostInfo} setScrollToComments={setScrollToComments} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           </Route>
           <Route path="/" component={NotFound} />
         </Switch>
