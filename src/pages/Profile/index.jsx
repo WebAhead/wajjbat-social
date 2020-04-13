@@ -12,7 +12,10 @@ import { getRequest } from "../../utils/backEndFetch";
 export default function Profile({ isLoggedIn, setCurrentPostInfo }) {
   return (
     <Router>
-      <QueryParams isLoggedIn={isLoggedIn} setCurrentPostInfo={setCurrentPostInfo} />
+      <QueryParams
+        isLoggedIn={isLoggedIn}
+        setCurrentPostInfo={setCurrentPostInfo}
+      />
     </Router>
   );
 }
@@ -20,7 +23,7 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-function QueryParams({ isLoggedIn ,setCurrentPostInfo}) {
+function QueryParams({ isLoggedIn, setCurrentPostInfo }) {
   const [indicator, setIndicator] = React.useState(true);
   const [profileInfo, setProfileInfo] = React.useState({});
   let query = useQuery();
@@ -120,15 +123,15 @@ function Child({ name, setCurrentPostInfo, profileInfo }) {
     getPosts(name === null ? "userPosts" : name);
   }, [name]);
 
-  const viewPostData = (postData) => {
-    setCurrentPostInfo({
-      postData,
-      userData: profileInfo.user_info,
-      isFavorite: null,
-      isLiked: null,
-      isFollowed: null,
-    });
-  };
+  // const viewPostData = () => {
+  //   setCurrentPostInfo({
+  //     postData,
+  //     userData: profileInfo.user_info,
+  //     isFavorite: null,
+  //     isLiked: null,
+  //     isFollowed: null,
+  //   });
+  // };
   return (
     <div className="postContainer">
       {indicator ? (
@@ -139,9 +142,22 @@ function Child({ name, setCurrentPostInfo, profileInfo }) {
         posts ? (
           posts.map((post, i) => (
             <div className="cardPost">
-              <Link to="ViewPost" onClick={() => viewPostData(post.post_info)}>
-                <PostDetails postData={post.post_info} noIcon noDesc />
-              </Link>
+              {/* <Link to="ViewPost" onClick={() => viewPostData(post.post_info)}> */}
+                <PostDetails
+                  viewPostData={() =>
+                    setCurrentPostInfo({
+                      postData:post.post_info,
+                      userData: profileInfo.user_info,
+                      isFavorite: null,
+                      isLiked: null,
+                      isFollowed: null,
+                    })
+                  }
+                  postData={post.post_info}
+                  noIcon
+                  noDesc
+                />
+              {/* </Link> */}
             </div>
           ))
         ) : (
@@ -150,9 +166,21 @@ function Child({ name, setCurrentPostInfo, profileInfo }) {
       ) : posts ? (
         posts.map((post, i) => (
           <div className="cardPost">
-            <Link to="ViewPost" onClick={() => viewPostData(post.post_info)}>
-              <PostDetails postData={post.post_info} noIcon noDesc />
-            </Link>{" "}
+            {/* <Link to="ViewPost" onClick={() => viewPostData(post.post_info)}> */}
+            <PostDetails
+                  viewPostData={() =>
+                    setCurrentPostInfo({
+                      postData:post.post_info,
+                      userData: profileInfo.user_info,
+                      isFavorite: null,
+                      isLiked: null,
+                      isFollowed: null,
+                    })
+                  }
+                  postData={post.post_info}
+                  noIcon
+                  noDesc
+                />            {/* </Link> */}
           </div>
         ))
       ) : (
