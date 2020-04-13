@@ -37,7 +37,7 @@ function App() {
             <ViewPost isLoggedIn={isLoggedIn}  currentPostInfo={currentPostInfo} scrollToComments={scrollToComments} isLoggedIn={isLoggedIn} />
           </Route>
           <Route path="/Profile">
-            <Profile isLoggedIn={isLoggedIn} />
+            <Profile isLoggedIn={isLoggedIn} setCurrentPostInfo={setCurrentPostInfo}/>
           </Route>
           <Route path="/Followers">
             <Followers isLoggedIn={isLoggedIn} />

@@ -9,10 +9,10 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 import { getRequest } from "../../utils/backEndFetch";
 
-export default function Profile({ isLoggedIn }) {
+export default function Profile({ isLoggedIn, setCurrentPostInfo }) {
   return (
     <Router>
-      <QueryParams isLoggedIn={isLoggedIn} />
+      <QueryParams isLoggedIn={isLoggedIn} setCurrentPostInfo={setCurrentPostInfo} />
     </Router>
   );
 }
@@ -20,7 +20,7 @@ function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-function QueryParams({ isLoggedIn }) {
+function QueryParams({ isLoggedIn ,setCurrentPostInfo}) {
   const [indicator, setIndicator] = React.useState(true);
   const [profileInfo, setProfileInfo] = React.useState({});
   let query = useQuery();
@@ -92,7 +92,11 @@ function QueryParams({ isLoggedIn }) {
             </Link>
           </ul>
 
-          <Child name={query.get("name")} />
+          <Child
+            name={query.get("name")}
+            setCurrentPostInfo={setCurrentPostInfo}
+            profileInfo={profileInfo}
+          />
         </div>
       )}
       <MainFooter isLoggedIn={isLoggedIn} />
@@ -100,7 +104,7 @@ function QueryParams({ isLoggedIn }) {
   );
 }
 
-function Child({ name }) {
+function Child({ name, setCurrentPostInfo, profileInfo }) {
   const [indicator, setIndicator] = React.useState(true);
   const [posts, setPosts] = React.useState([]);
 
@@ -116,6 +120,15 @@ function Child({ name }) {
     getPosts(name === null ? "userPosts" : name);
   }, [name]);
 
+  const viewPostData = (postData) => {
+    setCurrentPostInfo({
+      postData,
+      userData: profileInfo.user_info,
+      isFavorite: null,
+      isLiked: null,
+      isFollowed: null,
+    });
+  };
   return (
     <div className="postContainer">
       {indicator ? (
@@ -124,30 +137,26 @@ function Child({ name }) {
         </div>
       ) : name == "userFavorites" ? (
         posts ? (
-          posts.map((post,i) => (
+          posts.map((post, i) => (
             <div className="cardPost">
-          <PostDetails
-            postData={post.post_info}
-            noIcon
-            noDesc
-          />
-         </div>
-        ))) : (
+              <Link to="ViewPost" onClick={() => viewPostData(post.post_info)}>
+                <PostDetails postData={post.post_info} noIcon noDesc />
+              </Link>
+            </div>
+          ))
+        ) : (
           <h3>there is no favorite posts</h3>
         )
+      ) : posts ? (
+        posts.map((post, i) => (
+          <div className="cardPost">
+            <Link to="ViewPost" onClick={() => viewPostData(post.post_info)}>
+              <PostDetails postData={post.post_info} noIcon noDesc />
+            </Link>{" "}
+          </div>
+        ))
       ) : (
-        posts ? (
-          posts.map((post,i) => (
-            <div className="cardPost">
-          <PostDetails
-            postData={post.post_info}
-            noIcon
-            noDesc
-          />
-         </div>
-        ))) : (
-          <h3>there is no posts</h3>
-        )
+        <h3>there is no posts</h3>
       )}
     </div>
   );
