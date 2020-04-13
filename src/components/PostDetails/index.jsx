@@ -1,125 +1,195 @@
-import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import pancakeExample from '../../assets/images/pancakeExample.jpg';
-import halal from '../../assets/logos/halal.ico';
-import noGluten from '../../assets/logos/noGluten.ico';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
+import pancakeExample from "../../assets/images/pancakeExample.jpg";
+import halal from "../../assets/logos/halal.ico";
+import noGluten from "../../assets/logos/noGluten.ico";
+import kasher from "../../assets/logos/kasher.jpg";
+import vegan from "../../assets/logos/vegan.png";
+import vegetarian from "../../assets/logos/vegetarian.png";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShareIcon from "@material-ui/icons/Share";
+import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { makeStyles } from "@material-ui/core/styles";
+import { postRequest } from "../../utils/backEndFetch";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
-    paddingTop: '56.25%' // 16:9
+    paddingTop: "56.25%", // 16:9
   },
   expand: {
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest
-    })
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest,
+    }),
   },
   CloseReadMore: {
-    transform: 'rotate(180deg)',
-    opacity: '0.8',
+    transform: "rotate(180deg)",
+    opacity: "0.8",
     marginLeft: 300,
-    cursor: 'pointer'
+    cursor: "pointer",
   },
   avatar: {
-    backgroundColor: 'red'
+    backgroundColor: "red",
   },
   logoContainer: {
-    display: 'flex',
-    justifyContent: 'flex-start'
+    display: "flex",
+    justifyContent: "flex-start",
   },
   logo: {
     width: 25,
     height: 25,
-    marginLeft: 5
+    marginLeft: 5,
   },
   readMore: {
     fontSize: 10,
-    opacity: '0.8',
-    display: 'inline',
+    opacity: "0.8",
+    display: "inline",
     margin: 0,
-    cursor: 'pointer'
-  }
+    cursor: "pointer",
+  },
 }));
 
-export default function PostDetails({ postTitle, isExpanded, noIcon, noDesc, setScrollToComments, isLoggedIn }) {
+export default function PostDetails({
+  postData,
+  isFavorite,
+  isLiked,
+  viewPostData,
+  isExpanded,
+  noIcon,
+  noDesc,
+  setScrollToComments,
+  isLoggedIn,
+}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [like, setLike] = React.useState(isLiked);
+  const [favorite, setFavorite] = React.useState(isFavorite);
   const history = useHistory();
+  const tags = [halal, noGluten, kasher, vegan, vegetarian];
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
   const movesignin = () => {
-    history.push('/signin');
+    history.push("/signin");
   };
+
+  const setAction = (path) => {
+    postRequest(path, { post_id: postData._id }).then((response) => {
+      path.includes("ike") ? setLike(!like) : setFavorite(!favorite);
+    });
+  };
+
+  const firstParagraph = postData.caption.substring(0, 100);
+  const secondParagraph = postData.caption.substring(
+    100,
+    postData.caption.length + 1
+  );
   return (
     <React.Fragment>
-      <Link to="ViewPost" onClick={() => setScrollToComments(false)}>
-        <CardMedia className={classes.media} image={pancakeExample} />
+      <Link
+        to="ViewPost"
+        onClick={() =>viewPostData(false)}
+      >
+        <CardMedia className={classes.media} image={postData.img_url} />
       </Link>
       <CardActions disableSpacing>
         {noIcon ? (
-          <h5 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h5>
+          <h5 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postData.title}</h5>
         ) : (
           <React.Fragment>
-            <IconButton aria-label="add to favorites" onClick={isLoggedIn ? () => 1 : movesignin}>
-              <FavoriteIcon />
+            <IconButton
+              aria-label="add to favorites"
+              onClick={
+                isLoggedIn
+                  ? () => {
+                      favorite
+                        ? setAction("/unFavorite")
+                        : setAction("/favorites");
+                    }
+                  : movesignin
+              }
+            >
+              <FavoriteIcon color={favorite ? "secondary" : "action"} />
             </IconButton>
-            <IconButton aria-label="like" onClick={isLoggedIn ? () => 1 : movesignin}>
-              <ThumbUpIcon />
+            <IconButton
+              aria-label="like"
+              onClick={
+                isLoggedIn
+                  ? () => {
+                      like ? setAction("/unLike") : setAction("/likes");
+                    }
+                  : movesignin
+              }
+            >
+              <ThumbUpIcon color={like ? "primary" : "action"} />
             </IconButton>
-            <IconButton aria-label="share" onClick={isLoggedIn ? () => 1 : movesignin}>
+            <span>{postData.likes}</span>
+            <IconButton
+              aria-label="share"
+              onClick={isLoggedIn ? () => 1 : movesignin}
+            >
               <ShareIcon />
             </IconButton>
           </React.Fragment>
         )}
-        <img className={classes.logo} src={halal} alt="halal" style={noIcon ? { width: 20, height: 20 } : {}} />
-        <img className={classes.logo} src={noGluten} alt="no gluten" style={noIcon ? { width: 20, height: 20 } : {}} />
+        {Object.entries(postData.tags).map((tag, i) => {
+          if (tag[1] && tags.length > i) {
+            return (
+              <img
+                className={classes.logo}
+                src={tags[i]}
+                alt={tag[0]}
+                style={noIcon ? { width: 20, height: 20 } : {}}
+              />
+            );
+          }
+        })}
       </CardActions>
 
       {noDesc ? (
-        ''
+        ""
       ) : (
         <CardContent style={{ paddingTop: 0 }}>
-          <h2 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postTitle}</h2>
+          <h2 style={{ marginTop: 0, marginBlockEnd: 10 }}>{postData.title}</h2>
           <Typography variant="body2" color="textSecondary" component="p">
-            Tall and fluffy. These pancakes are just right. Topped with strawberries and whipped creatm, they are impossible to resist.
-            {expanded || isExpanded ? (
-              ` Lorem Ipsum is simply dummy text of 
-        the printing and typesetting industry. 
-        Lorem Ipsum has been the industry's 
-        standard dummy text ever since the 1500s, 
-        when an unknown printer took a galley of 
-        type and scrambled it to make a type specimen 
-        book. It has survived not only five centuries, 
-         also the leap into electronic typesetting, 
-         remaining essentially unchanged. It was 
-         popularised in the 1960s with the release of 
-         etraset sheets containing Lorem Ipsum passages, 
-         and more recently with desktop publishing 
-         software like Aldus PageMaker including versions 
-         of Lorem Ipsum.`
+            {firstParagraph}
+            {secondParagraph ? (
+              expanded || isExpanded ? (
+                secondParagraph
+              ) : (
+                <React.Fragment>
+                  ...
+                <IconButton
+                  className={classes.expand}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="read more"
+                >
+                  <h6 className={classes.readMore}>Read More...</h6>
+                </IconButton>
+                </React.Fragment>
+              )
             ) : (
-              <IconButton className={classes.expand} onClick={handleExpandClick} aria-expanded={expanded} aria-label="read more">
-                <h6 className={classes.readMore}>Read More...</h6>
-              </IconButton>
+              ""
             )}
           </Typography>
         </CardContent>
       )}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <IconButton className={classes.CloseReadMore} onClick={handleExpandClick} aria-expanded={expanded} aria-label="To The Top">
+        <IconButton
+          className={classes.CloseReadMore}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="To The Top"
+        >
           <ExpandMoreIcon />
         </IconButton>
       </Collapse>
